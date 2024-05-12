@@ -42,8 +42,7 @@ namespace CK_CSharp.Controllers
 
             await dbContext.SaveChangesAsync();
 
-
-            return View();
+            return RedirectToAction("List", "Company");
         }
 
         [HttpGet]
