@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CK_CSharp.Models.Department
+
+@{
+    ViewData["Title"] = "Add Department";
+}
+
+<h1>Add Department</h1>
+
+<!-- Thêm form để nhập thông tin phòng ban -->
+<form asp-action="Add" method="post">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" required title="Vui lòng nhập tên phòng ban" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input asp-for="Description" class="form-control" required title="Vui lòng nhập mô tả phòng ban" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CompanyId" class="control-label"></label>
+        <input asp-for="CompanyId" class="form-control" required title="Vui lòng chọn công ty" />
+        <span asp-validation-for="CompanyId" class="text-danger"></span>
+        </div>
+    <button type="submit" class="btn btn-primary">Thêm</button>
+    <button class="btn btn-primary" type="button">Huỷ</button>
+</form>
+
+<!-- Hiển thị thông báo lỗi tổng quát -->
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
