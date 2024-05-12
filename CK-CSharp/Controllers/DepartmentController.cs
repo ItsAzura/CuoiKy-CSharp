@@ -91,6 +91,13 @@ namespace CK_CSharp.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Detail(int id)
+        {
+            var department = await dbContext.Departments.FindAsync(id);
+            return View(department);
+        }
+
 
     }
 }
