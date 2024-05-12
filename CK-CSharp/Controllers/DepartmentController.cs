@@ -45,6 +45,52 @@ namespace CK_CSharp.Controllers
             return View(departments);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var department = await dbContext.Departments.FindAsync(id);
+            return View(department);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Department departments)
+        {
+            var department = await dbContext.Departments.FindAsync(departments.DepartmentId);
+            if(department is not null)
+            {
+                department.Name = departments.Name;
+                department.Description = departments.Description;
+                department.CompanyId = departments.CompanyId;
+
+                await dbContext.SaveChangesAsync();
+
+                
+            }
+
+            return RedirectToAction("List", "Department");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var department = await dbContext.Departments.FirstOrDefaultAsync(x => x.DepartmentId == id);
+            if (department == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                dbContext.Departments.Remove(department);
+                await dbContext.SaveChangesAsync();
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            return Ok();
+        }
+
 
     }
 }

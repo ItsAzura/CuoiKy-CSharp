@@ -61,7 +61,7 @@
             $('.delete-button').click(function () {
                 var id = $(this).data('id');
                 $.ajax({
-                    url: '@Url.Action("Delete", "Company")/' + id,
+                    url: "/Company/Delete/" + id,
                     type: 'POST',
                     success: function (result) {
                         location.reload();

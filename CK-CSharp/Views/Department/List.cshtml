@@ -44,7 +44,6 @@
                     <a class="btn btn-primary" asp-action="Edit" asp-controller="Department" asp-route-id="@item.DepartmentId">Sửa</a> |
                     <a class="btn btn-primary" asp-action="Detail" asp-controller="Department" asp-route-id="@item.DepartmentId">Chi Tiết</a> |
                     <button class="btn btn-danger delete-button" data-id="@item.DepartmentId">Xoá</button>
-
                 </td>
             </tr>
         }
@@ -56,18 +55,15 @@
         $(document).ready(function () {
             $(".delete-button").click(function () {
                 var id = $(this).data("id");
-                if (confirm("Bạn có chắc chắn muốn xoá không?")) {
+                if (confirm("Bạn có chắc chắn muốn xoá phòng ban này không?")) {
                     $.ajax({
-                        url: "/Department/Delete",
+                        url: "/Department/Delete/" + id,
                         type: "POST",
-                        data: { id: id },
                         success: function (result) {
-                            if (result.success) {
-                                alert("Xoá thành công");
-                                location.reload();
-                            } else {
-                                alert("Xoá thất bại");
-                            }
+                            location.reload();
+                        },
+                        error: function () {
+                            alert('Đã xảy ra lỗi khi xóa mục.');
                         }
                     });
                 }
@@ -75,4 +71,5 @@
         });
     </script>
 }
+
 

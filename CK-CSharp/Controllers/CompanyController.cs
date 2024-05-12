@@ -101,7 +101,7 @@ namespace CK_CSharp.Controllers
             catch (Exception ex)
             {
                 // Xử lý lỗi ở đây, ví dụ: ghi log, hiển thị thông báo lỗi cho người dùng
-                return BadRequest(); // Trả về HTTP 400 Bad Request nếu có lỗi xảy ra
+                return BadRequest(ex.Message); // Trả về HTTP 400 Bad Request nếu có lỗi xảy ra
             }
 
             return Ok(); // Trả về HTTP 200 OK để xác nhận xóa thành công

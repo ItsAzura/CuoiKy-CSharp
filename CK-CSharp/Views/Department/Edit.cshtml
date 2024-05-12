@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CK_CSharp.Models.Department
+
+@{
+    ViewData["Title"] = "Edit Department";
+}
+
+<h1>Edit Department</h1>
+
+@if(Model is null) {
+    <p>Không Tìm Thấy Department</p>
+}
+
+@if(Model is not null)
+{
+    <form asp-action="Edit" method="post">
+        <div class="form-group">
+            <label asp-for="DepartmentId" class="control-label"></label>
+            <input asp-for="DepartmentId" class="form-control" readonly />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CompanyId" class="control-label"></label>
+            <input asp-for="CompanyId" class="form-control" />
+            <span asp-validation-for="CompanyId" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+        <a class="btn btn-danger" asp-action="List" asp-controller="Department">Huỷ</a>
+    </form>
+}
+
+ <!-- Hiển thị thông báo lỗi tổng quát -->
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
