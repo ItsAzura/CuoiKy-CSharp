@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CK_CSharp.Migrations
 {
     [DbContext(typeof(EmployeeDbContext))]
-    [Migration("20240511150518_fixSchedule")]
-    partial class fixSchedule
+    [Migration("20240513045456_AddDepartmentName")]
+    partial class AddDepartmentName
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -153,6 +153,10 @@ namespace CK_CSharp.Migrations
 
                     b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
+
+                    b.Property<string>("DepartmentName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()

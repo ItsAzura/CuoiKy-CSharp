@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CK_CSharp.Migrations
 {
     [DbContext(typeof(EmployeeDbContext))]
-    [Migration("20240511150037_inint")]
-    partial class inint
+    [Migration("20240513044800_RemoveDepartmentName")]
+    partial class RemoveDepartmentName
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -187,6 +187,9 @@ namespace CK_CSharp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
@@ -203,6 +206,8 @@ namespace CK_CSharp.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("ScheduleId");
+
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("schedules");
                 });
@@ -249,6 +254,17 @@ namespace CK_CSharp.Migrations
                     b.Navigation("Company");
 
                     b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("CK_CSharp.Models.Schedule", b =>
+                {
+                    b.HasOne("CK_CSharp.Models.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("CK_CSharp.Models.Company", b =>

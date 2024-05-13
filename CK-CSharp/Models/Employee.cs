@@ -29,6 +29,9 @@ namespace CK_CSharp.Models
 
         public Department Department { get; set; }
 
+        [Display(Name = "Tên Phòng Ban")]
+        public string DepartmentName { get; set; }
+
         [ForeignKey("Company")]
         [Display(Name = "Id Công Ty")]
         public int? CompanyId { get; set; }
