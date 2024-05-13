@@ -4,38 +4,43 @@
 @{
 }
 
-@model CK_CSharp.Models.Company
+@model CK_CSharp.Models.Employee
 
 @{
-    ViewData["Title"] = "Add Company";
+    ViewData["Title"] = "Add Employee";
 }
 
-<h1>Add Company</h1>
+<h1>Add Employee</h1>
 
 <form asp-action="Add" method="post">
     <div class="form-group">
         <label asp-for="Name" class="control-label"></label>
-        <input asp-for="Name" class="form-control" required title="Vui lòng nhập tên Công Ty" />
+        <input asp-for="Name" class="form-control" required />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Address" class="control-label"></label>
-        <input asp-for="Address" class="form-control" required title="Vui lòng nhập địa chỉ Công Ty" />
+        <input asp-for="Address" class="form-control" required  />
         <span asp-validation-for="Address" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="PhoneNumber" class="control-label"></label>
-        <input asp-for="PhoneNumber" class="form-control" required title="Vui lòng nhập số điện thoại Công Ty" />
+        <input asp-for="PhoneNumber" class="form-control" required />
         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Email" class="control-label"></label>
-        <input asp-for="Email" class="form-control" required title="Vui lòng nhập Email Công Ty" />
+        <input asp-for="Email" class="form-control" required  />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DepartmentId" class="control-label"></label>
+        <input asp-for="DepartmentId" class="form-control" required  />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
     <button type="submit" class="btn btn-primary">Thêm</button>
     <button class="btn btn-primary" type="button">Huỷ</button>
 </form>
 
-
 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
