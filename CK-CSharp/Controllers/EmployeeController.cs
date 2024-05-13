@@ -52,9 +52,7 @@ namespace CK_CSharp.Controllers
 
             await dbContext.SaveChangesAsync();
 
-           return View();
-
-            //return RedirectToAction("List", "Employee");
+            return RedirectToAction("List", "Employee");
         }
 
         [HttpGet]
@@ -76,6 +74,38 @@ namespace CK_CSharp.Controllers
 
             return View(employeeViewModels);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var employee = await dbContext.Employees.FindAsync(id);
+            return View(employee);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Employee employee)
+        {
+            var employeeToUpdate = await dbContext.Employees.FindAsync(employee.EmployeeId);
+
+            if (employeeToUpdate is not null)
+            {
+                if (!IsValidPhoneNumber(employee.PhoneNumber))
+                {
+                    ModelState.AddModelError("PhoneNumber", "Số điện thoại không hợp lệ.");
+                    return View(employee);
+                }
+
+                employeeToUpdate.Name = employee.Name;
+                employeeToUpdate.Address = employee.Address;
+                employeeToUpdate.PhoneNumber = employee.PhoneNumber;
+                employeeToUpdate.Email = employee.Email;
+                employeeToUpdate.DepartmentId = employee.DepartmentId;
+
+                await dbContext.SaveChangesAsync();
+            }
+
+            return RedirectToAction("List", "Employee");
+        }   
 
         private bool IsValidPhoneNumber(string phoneNumber)
         {
