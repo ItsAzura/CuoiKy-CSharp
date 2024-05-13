@@ -105,6 +105,29 @@ namespace CK_CSharp.Controllers
             }
 
             return RedirectToAction("List", "Employee");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var employee = await dbContext.Employees.FirstOrDefaultAsync(x => x.EmployeeId == id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                dbContext.Employees.Remove(employee);
+                await dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+
+            return Ok();
         }   
 
         private bool IsValidPhoneNumber(string phoneNumber)
