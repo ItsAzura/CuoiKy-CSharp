@@ -126,9 +126,15 @@ namespace CK_CSharp.Controllers
                 return BadRequest(ex.Message);
             }
 
-
             return Ok();
-        }   
+        }
+
+        [HttpGet]   
+        public async Task<IActionResult> Detail(int id)
+        {
+            var employee = await dbContext.Employees.FindAsync(id);
+            return View(employee);
+        }
 
         private bool IsValidPhoneNumber(string phoneNumber)
         {
