@@ -23,7 +23,8 @@ namespace CK_CSharp.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(Employee employee)
         {
-            if (!IsValidPhoneNumber(employee.PhoneNumber))
+            // Kiểm tra số điện thoại hợp lệ
+            if (!IsValidPhoneNumber(employee.PhoneNumber)) 
             {
                 ModelState.AddModelError("PhoneNumber", "Số điện thoại không hợp lệ.");
                 return View(employee); 
@@ -58,7 +59,8 @@ namespace CK_CSharp.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            var employees = await dbContext.Employees.ToListAsync();
+            var employees = await dbContext.Employees.ToListAsync(); 
+            
             var employeeViewModels = employees.Select(employee => new Employee
             {
                 EmployeeId = employee.EmployeeId,
@@ -70,7 +72,7 @@ namespace CK_CSharp.Controllers
                     .Where(d => d.DepartmentId == employee.DepartmentId)
                     .Select(d => d.Name)
                     .FirstOrDefault() ?? "Unknown"
-            }).ToList();
+            }).ToList(); 
 
             return View(employeeViewModels);
         }
@@ -87,7 +89,8 @@ namespace CK_CSharp.Controllers
         {
             var employeeToUpdate = await dbContext.Employees.FindAsync(employee.EmployeeId);
 
-            if (employeeToUpdate is not null)
+            // Nếu nhân viên tồn tại
+            if (employeeToUpdate is not null) 
             {
                 if (!IsValidPhoneNumber(employee.PhoneNumber))
                 {

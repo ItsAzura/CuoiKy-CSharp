@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Learn C#\CK-CSharp\CK-CSharp
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Learn C\#/CK-CSharp/CK-CSharp/Views/Announcement/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5ub3VuY2VtZW50XEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Learn C\#/CK-CSharp/CK-CSharp/Views/Category/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

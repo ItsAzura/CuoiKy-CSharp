@@ -44,12 +44,6 @@ namespace CK_CSharp.Controllers
                 return View(schedule);
             }
 
-            if (Image == null || Image.Length == 0)
-            {
-                ModelState.AddModelError("Image", "Ảnh là cần thiết.");
-                return View(schedule);
-            }
-
             var employee = await dbContext.Employees.FindAsync(schedule.EmployeeId);
             if (employee == null)
             {
@@ -58,6 +52,11 @@ namespace CK_CSharp.Controllers
             }
             schedule.EmployeeName = employee.Name;
 
+            if (Image == null || Image.Length == 0)
+            {
+                ModelState.AddModelError("Image", "Ảnh là cần thiết.");
+                return View(schedule);
+            }
             //Tạo ra một đường dẫn tới thư mục "image" trong thư mục gốc
             var uploadPath = Path.Combine(_hostingEnvironment.WebRootPath, "image");
 

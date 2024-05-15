@@ -23,7 +23,7 @@ namespace CK_CSharp.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(Category category)
         {
-            var newCategory = new Category
+            var newCategory = new Category 
             {
                 Name = category.Name,
                 Description = category.Description

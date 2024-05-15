@@ -64,9 +64,10 @@ namespace CK_CSharp.Controllers
         {
             var company = await dbContext.Companies.FindAsync(companys.CompanyId);
 
-            if (company is not null)
+            // Nếu Company có tồn tại
+            if (company is not null) 
             {
-                if (!IsValidPhoneNumber(companys.PhoneNumber))
+                if (!IsValidPhoneNumber(companys.PhoneNumber)) // Kiểm tra số điện thoại có đúng định dạng không?
                 {
                     ModelState.AddModelError("PhoneNumber", "Số điện thoại không hợp lệ.");
                     return View(companys);
