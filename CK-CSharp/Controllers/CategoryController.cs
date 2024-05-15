@@ -88,5 +88,12 @@ namespace CK_CSharp.Controllers
             return Ok();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Detail(int id)
+        {
+            var category = await dbContext.Categories.FindAsync(id);
+            return View(category);
+        }
+
     }
 }
