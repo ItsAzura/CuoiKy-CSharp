@@ -27,7 +27,7 @@ namespace CK_CSharp.Models
         [NotMapped]
         public IFormFile Image { get; set; }
 
-        [Display(Name = "Đường dẫn ảnh")]
+        [Display(Name = "Ảnh")]
         public string ImagePath { get; set; }
 
         public Employee Employee { get; set; }

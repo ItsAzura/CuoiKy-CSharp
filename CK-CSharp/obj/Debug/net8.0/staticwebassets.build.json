@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Gn8rTNlK9mvoFIkoUjxVcyo9PpX34dLqBLkjRAFHoRI=",
+  "Hash": "opw26IbJPTvSoN9+5tInE4iT+EbROSFotq6F9O8cVtY=",
   "Source": "CK-CSharp",
   "BasePath": "_content/CK-CSharp",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\image\\Azaka.png"
+    },
+    {
+      "Identity": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\batman.png",
+      "SourceId": "CK-CSharp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\",
+      "BasePath": "_content/CK-CSharp",
+      "RelativePath": "image/batman.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\batman.png"
     },
     {
       "Identity": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Screenshot 2023-09-17 141103.png",

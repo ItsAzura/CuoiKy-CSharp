@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CK-CSharp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3599adf47ee90c33c09450ac04b3865e39fb5a36")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe0b2a17ccb74ec6dd4e3fcf55f07b284c6f9154")]
 [assembly: System.Reflection.AssemblyProductAttribute("CK-CSharp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CK-CSharp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

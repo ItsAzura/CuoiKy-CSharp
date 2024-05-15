@@ -1,6 +1,7 @@
 ﻿using CK_CSharp.Data;
 using CK_CSharp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -64,21 +65,16 @@ namespace CK_CSharp.Controllers
                 ModelState.AddModelError("Image", "Ảnh là cần thiết.");
                 return View(announcement);
             }
-
             var uploadPath = Path.Combine(_hostingEnvironment.WebRootPath, "image");
-
             if (!Directory.Exists(uploadPath))
             {
                 Directory.CreateDirectory(uploadPath);
             }
-
             var filePath = Path.Combine(uploadPath, Image.FileName);
-
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await Image.CopyToAsync(stream);
             }
-
             announcement.ImagePath = "/image/" + Image.FileName;
 
             var newAnnouncement = new Announcement
@@ -107,6 +103,13 @@ namespace CK_CSharp.Controllers
             }
 
             return RedirectToAction("List", "Announcement");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> List()
+        {
+            var announcements = await dbContext.announcements.ToListAsync();
+            return View(announcements);
         }
 
         private bool DateValidator(string date)
