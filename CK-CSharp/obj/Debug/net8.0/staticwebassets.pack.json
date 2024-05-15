@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets\\image\\batman.png"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\ironman.png",
+      "PackagePath": "staticwebassets\\image\\ironman.png"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

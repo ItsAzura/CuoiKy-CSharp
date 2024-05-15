@@ -59,7 +59,8 @@
                     <img src="@item.ImagePath" width="100" alt="image" />
                 <td>
                     <a asp-action="Edit" asp-controller="Announcement" asp-route-id="@item.AnnouncementId" class="btn btn-primary">Sửa</a>
-                    <a asp-action="Delete" asp-controller="Announcement" asp-route-id="@item.AnnouncementId" class="btn btn-danger">Xoá</a>
+                    <a asp-action="Detail" asp-controller="Announcement" asp-route-id="@item.AnnouncementId" class="btn btn-primary">Chi Tiết</a>
+                    <button class="btn btn-danger delete-button" data-id="@item.AnnouncementId">Xoá</button> 
                 </td>
             </tr>
         }

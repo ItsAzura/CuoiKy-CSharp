@@ -112,6 +112,87 @@ namespace CK_CSharp.Controllers
             return View(announcements);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var announcement = await dbContext.announcements.FindAsync(id);
+            if(announcement == null)
+            {
+                return NotFound();
+            }
+            return View(announcement);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Announcement announcement, IFormFile Image) 
+        {
+            var AnnouncementUpdate = await dbContext.announcements.FindAsync(announcement.AnnouncementId);
+            if (AnnouncementUpdate is not null)
+            {
+                if (string.IsNullOrEmpty(announcement.Title))
+                {
+                    ModelState.AddModelError("Title", "Tiêu đề là cần thiết.");
+                    return View(announcement);
+                }
+                AnnouncementUpdate.Title = announcement.Title;
+
+                if (string.IsNullOrEmpty(announcement.Content))
+                {
+                    ModelState.AddModelError("Content", "Nội dung là cần thiết.");
+                    return View(announcement);
+                }
+                AnnouncementUpdate.Content = announcement.Content;
+
+                if (!DateValidator(announcement.DatePosted))
+                {
+                    ModelState.AddModelError("DatePosted", "Ngày tháng không hợp lệ.");
+                    return View(announcement);
+                }
+                AnnouncementUpdate.DatePosted = announcement.DatePosted;
+
+                var category = await dbContext.Categories.FindAsync(announcement.CategoryId);
+                if (category == null)
+                {
+                    ModelState.AddModelError("CategoryId", "Thể loại không hợp lệ.");
+                    return View(announcement);
+                }
+                AnnouncementUpdate.CategoryName = category.Name;
+
+                var employee = await dbContext.Employees.FindAsync(announcement.EmployeeId);
+                if (employee == null)
+                {
+                    ModelState.AddModelError("EmployeeId", "Nhân viên không hợp lệ.");
+                    return View(announcement);
+                }
+                AnnouncementUpdate.EmployeeName = employee.Name;
+
+                if (Image == null || Image.Length == 0)
+                {
+                    ModelState.AddModelError("Image", "Ảnh là cần thiết.");
+                    return View(announcement);
+                }
+                var uploadPath = Path.Combine(_hostingEnvironment.WebRootPath, "image");
+                if (!Directory.Exists(uploadPath))
+                {
+                    Directory.CreateDirectory(uploadPath);
+                }
+                var filePath = Path.Combine(uploadPath, Image.FileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await Image.CopyToAsync(stream);
+                }
+                AnnouncementUpdate.ImagePath = "/image/" + Image.FileName;
+                
+                AnnouncementUpdate.CategoryId = announcement.CategoryId;
+                AnnouncementUpdate.EmployeeId = announcement.EmployeeId;
+
+                await dbContext.SaveChangesAsync();
+            }
+            return RedirectToAction("List", "Announcement");
+        }
+
+
+
         private bool DateValidator(string date)
         {
             string Datepattern = @"^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$"; ;

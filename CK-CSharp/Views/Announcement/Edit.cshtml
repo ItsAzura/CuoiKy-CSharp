@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CK_CSharp.Models.Announcement
+
+@{
+    ViewData["Title"] = "Edit Announcement";
+}
+
+<h1>Edit Announcement</h1>
+
+@if (Model is null)
+{
+    <p>Không Tìm Thấy Announcement</p>
+}
+
+@if (Model is not null)
+{
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="AnnouncementId" class="control-label"></label>
+            <input asp-for="AnnouncementId" class="form-control" readonly />
+            <span asp-validation-for="AnnouncementId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Title" class="control-label"></label>
+            <input asp-for="Title" class="form-control" required />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Content" class="control-label"></label>
+            <input asp-for="Content" class="form-control" required />
+            <span asp-validation-for="Content" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DatePosted" class="control-label"></label>
+            <input asp-for="DatePosted" class="form-control" required />
+            <span asp-validation-for="DatePosted" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryId" class="control-label"></label>
+            <input asp-for="CategoryId" class="form-control" required />
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryName" class="control-label"></label>
+            <input asp-for="CategoryName" class="form-control" readonly/>
+            <span asp-validation-for="CategoryName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EmployeeId" class="control-label"></label>
+            <input asp-for="EmployeeId" class="form-control" required />
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EmployeeName" class="control-label"></label>
+            <input asp-for="EmployeeName" class="form-control" readonly />
+            <span asp-validation-for="EmployeeName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Image" class="control-label"></label>
+            <input asp-for="Image" class="form-control" required type="file" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sửa</button>
+        <a class="btn btn-danger" asp-action="List" asp-controller="Announcement">Huỷ</a>
+    </form>
+}

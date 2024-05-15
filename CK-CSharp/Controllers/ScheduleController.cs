@@ -125,7 +125,7 @@ namespace CK_CSharp.Controllers
 
             if (scheduleToUpdate is not null)
             {
-                if (string.IsNullOrEmpty(scheduleToUpdate.Name))
+                if (string.IsNullOrEmpty(schedule.Name))
                 {
                     ModelState.AddModelError("Name", "Tên Lịch trình là cần thiết.");
                     return View(schedule);
