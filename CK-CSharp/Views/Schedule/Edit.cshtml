@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CK_CSharp.Models.Schedule
+
+@{
+    ViewData["Title"] = "Edit Schedule";
+}
+
+<h1>Edit Schedule</h1>
+
+@if (Model is null)
+{
+    <p>Không Tìm Thấy Schedule</p>
+}
+
+@if (Model is not null)
+{
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <div class="form-group row">
+            <label asp-for="ScheduleId" class="col-sm-2 col-form-label"></label>
+            <input asp-for="ScheduleId" class="form-control" readonly />
+            <span asp-validation-for="ScheduleId" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Name" class="col-sm-2 col-form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Description" class="col-sm-2 col-form-label"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="StartDate" class="col-sm-2 col-form-label"></label>
+            <input asp-for="StartDate" class="form-control" />
+            <span asp-validation-for="StartDate" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="EndDate" class="col-sm-2 col-form-label"></label>
+            <input asp-for="EndDate" class="form-control" />
+            <span asp-validation-for="EndDate" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="EmployeeId" class="col-sm-2 col-form-label"></label>
+            <input asp-for="EmployeeId" class="form-control" />
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="EmployeeName" class="col-sm-2 col-form-label"></label>
+            <input asp-for="EmployeeName" class="form-control" readonly/>
+            <span asp-validation-for="EmployeeName" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Image" class="col-sm-2 col-form-label"></label>
+            <input asp-for="Image" class="form-control" type="file" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Lưu</button>
+        <a class="btn btn-danger" asp-action="List" asp-controller="Schedule">Huỷ</a>
+    </form>
+}

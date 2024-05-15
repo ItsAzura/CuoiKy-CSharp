@@ -18,18 +18,27 @@ namespace CK_CSharp.Models
 
         [Display(Name = "Thời gian bắt đầu")]
         [RegularExpression(@"^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$", ErrorMessage = "Định dạng ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.")]
-        public DateTime StartDate { get; set; }
+        public string StartDate { get; set; }
 
         [Display(Name = "Thời gian kết thúc")]
         [RegularExpression(@"^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$", ErrorMessage = "Định dạng ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.")]
-        public DateTime EndDate { get; set; }
+        public string EndDate { get; set; }
 
-        public string Image { get; set; }
+        [NotMapped]
+        public IFormFile Image { get; set; }
+
+        [Display(Name = "Đường dẫn ảnh")]
+        public string ImagePath { get; set; }
 
         public Employee Employee { get; set; }
 
         [ForeignKey("Employee")]
-        [Display(Name = "Id nhân viên Tao Lịch Trình")]
+        [Display(Name = "Id nhân viên")]
         public int EmployeeId { get; set; }
+
+        [Display(Name = "Tên nhân viên")]
+        public string? EmployeeName { get; set; }
+
+        public DateTime? CreatedAt { get; set; }
     }
 }
