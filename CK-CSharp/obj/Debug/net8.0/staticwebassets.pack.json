@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Azaka.png",
+      "PackagePath": "staticwebassets\\image\\Azaka.png"
+    },
+    {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\animepic2.jpg",
+      "PackagePath": "staticwebassets\\image\\animepic2.jpg"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
