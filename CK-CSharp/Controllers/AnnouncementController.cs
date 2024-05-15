@@ -191,7 +191,27 @@ namespace CK_CSharp.Controllers
             return RedirectToAction("List", "Announcement");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var announcement = await dbContext.announcements.FindAsync(id);
+            if(announcement == null)
+            {
+                return NotFound();
+            }
+            try
+            {
+                dbContext.announcements.Remove(announcement);
+                await dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View(announcement);
+            }
 
+            return Ok();
+        }
 
         private bool DateValidator(string date)
         {
