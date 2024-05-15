@@ -88,7 +88,7 @@ namespace CK_CSharp.Controllers
                 ImagePath = schedule.ImagePath,
                 EmployeeId = schedule.EmployeeId,
                 EmployeeName = schedule.EmployeeName,
-                
+                CreatedAt = DateTime.Now,
             };
 
             try
@@ -96,8 +96,6 @@ namespace CK_CSharp.Controllers
                 await dbContext.schedules.AddAsync(newSchedule);
 
                 await dbContext.SaveChangesAsync();
-
-                return View(newSchedule);
             }
             catch (Exception ex)
             {

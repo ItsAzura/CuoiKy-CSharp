@@ -37,5 +37,7 @@ namespace CK_CSharp.Models
 
         [Display(Name = "Tên nhân viên")]
         public string? EmployeeName { get; set; }
+
+        public DateTime? CreatedAt { get; set; }
     }
 }
