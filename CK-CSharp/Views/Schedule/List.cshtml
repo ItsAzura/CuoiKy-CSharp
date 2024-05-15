@@ -64,5 +64,25 @@
                 </td>
             </tr>
         }
+
+        @section Scripts {
+            <script>
+                $(document).ready(function () {
+                    $('.delete-button').click(function () {
+                        var id = $(this).data('id');
+                        $.ajax({
+                            url: "/Schedule/Delete/" + id,
+                            type: 'POST',
+                            success: function (result) {
+                                location.reload();
+                            },
+                            error: function () {
+                                alert('Đã xảy ra lỗi khi xóa mục.');
+                            }
+                        });
+                    });
+                });
+            </script>
+        }
     </tbody>
 </table>
