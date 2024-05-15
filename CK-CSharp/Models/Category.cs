@@ -11,5 +11,8 @@ namespace CK_CSharp.Models
         [Display(Name = "Tên Thể Loại")]
         public string Name { get; set; }
 
+        [Display(Name = "Mô Tả")]
+        public string Description { get; set; }
+
     }
 }
