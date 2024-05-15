@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\image\\animepic2.jpg"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\animepicFemale.jpg",
+      "PackagePath": "staticwebassets\\image\\animepicFemale.jpg"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

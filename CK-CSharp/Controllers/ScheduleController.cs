@@ -2,8 +2,7 @@
 using CK_CSharp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace CK_CSharp.Controllers
 {
@@ -104,6 +103,13 @@ namespace CK_CSharp.Controllers
             }
 
             return RedirectToAction("List", "Schedule");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> List()
+        {
+            var schedules = await dbContext.schedules.ToListAsync();
+            return View(schedules);
         }
 
         private bool DateValidator(string date)

@@ -27,12 +27,13 @@ namespace CK_CSharp.Models
         [NotMapped]
         public IFormFile Image { get; set; }
 
+        [Display(Name = "Đường dẫn ảnh")]
         public string ImagePath { get; set; }
 
         public Employee Employee { get; set; }
 
         [ForeignKey("Employee")]
-        [Display(Name = "Id nhân viên Tao Lịch Trình")]
+        [Display(Name = "Id nhân viên")]
         public int EmployeeId { get; set; }
 
         [Display(Name = "Tên nhân viên")]
