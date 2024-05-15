@@ -28,7 +28,7 @@ namespace CK_CSharp.Controllers
 
             if (string.IsNullOrEmpty(schedule.Name))
             {
-                ModelState.AddModelError("Name", "Tên nhân viên là cần thiết.");
+                ModelState.AddModelError("Name", "Tên Lịch trình là cần thiết.");
                 return View(schedule);
             }
 
@@ -110,6 +110,101 @@ namespace CK_CSharp.Controllers
         {
             var schedules = await dbContext.schedules.ToListAsync();
             return View(schedules);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var schedule = await dbContext.schedules.FindAsync(id);
+            return View(schedule);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Schedule schedule, IFormFile Image)
+        {
+            var scheduleToUpdate = await dbContext.schedules.FindAsync(schedule.ScheduleId);
+
+            if (scheduleToUpdate is not null)
+            {
+                if (string.IsNullOrEmpty(scheduleToUpdate.Name))
+                {
+                    ModelState.AddModelError("Name", "Tên Lịch trình là cần thiết.");
+                    return View(schedule);
+                }
+
+                if (!DateValidator(schedule.StartDate))
+                {
+                    ModelState.AddModelError("StartDate", "Ngày tháng không hợp lệ.");
+                    return View(schedule);
+                }
+
+                if (!DateValidator(schedule.EndDate))
+                {
+                    ModelState.AddModelError("EndDate", "Ngày tháng không hợp lệ.");
+                    return View(schedule);
+                }
+
+                var employee = await dbContext.Employees.FindAsync(schedule.EmployeeId);
+                if (employee == null)
+                {
+                    ModelState.AddModelError("EmployeeId", "Nhân viên không hợp lệ.");
+                    return View(schedule);
+                }
+                schedule.EmployeeName = employee.Name;
+                scheduleToUpdate.EmployeeName = schedule.EmployeeName;
+
+                if (Image != null && Image.Length > 0)
+                {
+                    var uploadPath = Path.Combine(_hostingEnvironment.WebRootPath, "image");
+
+                    if (!Directory.Exists(uploadPath))
+                    {
+                        Directory.CreateDirectory(uploadPath);
+                    }
+
+                    var filePath = Path.Combine(uploadPath, Image.FileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await Image.CopyToAsync(stream);
+                    }
+
+                    scheduleToUpdate.ImagePath = "/image/" + Image.FileName;
+                }
+
+                scheduleToUpdate.Name = schedule.Name;
+                scheduleToUpdate.Description = schedule.Description;
+                scheduleToUpdate.StartDate = schedule.StartDate;
+                scheduleToUpdate.EndDate = schedule.EndDate;
+                scheduleToUpdate.EmployeeId = schedule.EmployeeId;
+                
+
+                await dbContext.SaveChangesAsync();
+            }
+
+            return RedirectToAction("List", "Schedule");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var schedule = await dbContext.schedules.FirstOrDefaultAsync(x => x.ScheduleId == id);
+            if (schedule == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                dbContext.schedules.Remove(schedule);
+                await dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            return Ok();
         }
 
         private bool DateValidator(string date)
