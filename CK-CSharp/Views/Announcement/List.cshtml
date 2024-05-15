@@ -1,0 +1,87 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<CK_CSharp.Models.Announcement>
+
+@{
+    ViewData["Title"] = "List Announcement";
+}
+
+<h1>Announcement List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatePosted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatePosted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    <img src="@item.ImagePath" width="100" alt="image" />
+                <td>
+                    <a asp-action="Edit" asp-controller="Announcement" asp-route-id="@item.AnnouncementId" class="btn btn-primary">Sửa</a>
+                    <a asp-action="Detail" asp-controller="Announcement" asp-route-id="@item.AnnouncementId" class="btn btn-primary">Chi Tiết</a>
+                    <button class="btn btn-danger delete-button" data-id="@item.AnnouncementId">Xoá</button> 
+                </td>
+            </tr>
+        }
+        @section Scripts {
+            <script>
+                $(document).ready(function () {
+                    $('.delete-button').click(function () {
+                        var id = $(this).data('id');
+                        $.ajax({
+                            url: "/Announcement/Delete/" + id,
+                            type: 'POST',
+                            success: function (result) {
+                                location.reload();
+                            },
+                            error: function () {
+                                alert('Đã xảy ra lỗi khi xóa mục.');
+                            }
+                        });
+                    });
+                });
+            </script>
+        }
+    </tbody>
+</table>

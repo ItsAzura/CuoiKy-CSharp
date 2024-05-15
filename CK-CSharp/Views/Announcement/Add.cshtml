@@ -1,0 +1,51 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CK_CSharp.Models.Announcement
+
+@{
+    ViewData["Title"] = "Add Announcement";
+}
+
+<h1>Add Announcement</h1>
+
+<form asp-action="Add" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" required />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Content" class="control-label"></label>
+        <input asp-for="Content" class="form-control" required />
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+        <div class="form-group">
+        <label asp-for="DatePosted" class="control-label"></label>
+        <input asp-for="DatePosted" class="form-control" required />
+        <span asp-validation-for="DatePosted" class="text-danger"></span>
+    </div>
+        <div class="form-group">
+        <label asp-for="CategoryId" class="control-label"></label>
+        <input asp-for="CategoryId" class="form-control" required />
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+        <div class="form-group">
+        <label asp-for="EmployeeId" class="control-label"></label>
+        <input asp-for="EmployeeId" class="form-control" required />
+        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Image" class="control-label"></label>
+        <input asp-for="Image" class="form-control" required type="file" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm</button>
+    <a class="btn btn-danger" asp-action="List" asp-controller="Announcement">Huỷ</a>
+</form>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })

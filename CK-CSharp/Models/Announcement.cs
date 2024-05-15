@@ -18,7 +18,7 @@ namespace CK_CSharp.Models
 
         [Display(Name = "Ngày Đăng")]
         [RegularExpression(@"^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$", ErrorMessage = "Định dạng ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.")]
-        public DateTime DatePosted { get; set; }
+        public string DatePosted { get; set; }
 
         [Display(Name = "Thể Loại")]
         public Category Category { get; set; }
@@ -27,12 +27,25 @@ namespace CK_CSharp.Models
         [Display(Name = "Id thể loại")]
         public int CategoryId { get; set; }
 
+        [Display(Name = "Thể Loại")]
+        public string? CategoryName { get; set; }
+
         public Employee Employee { get; set; }
 
         [ForeignKey("Employee")]
         [Display(Name = "Id nhân viên đăng bài")]
         public int EmployeeId { get; set; }
 
-        public string Image { get; set; }
+        [Display(Name = "Tên nhân viên")]
+        public string? EmployeeName { get; set; }
+
+        [NotMapped]
+        public IFormFile Image { get; set; }
+
+        [Display(Name = "Ảnh")]
+        public string ImagePath { get; set; }
+
+        public DateTime? CreatedAt { get; set; }
     }
+
 }

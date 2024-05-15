@@ -63,8 +63,6 @@ namespace CK_CSharp.Controllers
                 department.CompanyId = departments.CompanyId;
 
                 await dbContext.SaveChangesAsync();
-
-                
             }
 
             return RedirectToAction("List", "Department");
@@ -83,7 +81,8 @@ namespace CK_CSharp.Controllers
             {
                 dbContext.Departments.Remove(department);
                 await dbContext.SaveChangesAsync();
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 return BadRequest(ex.Message);
             }

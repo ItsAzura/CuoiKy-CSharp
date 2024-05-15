@@ -1,0 +1,59 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model CK_CSharp.Models.Announcement
+
+@{
+    ViewData["Title"] = "Details Announcement";
+}
+
+<h1>Details Announcement</h1>
+
+<div>
+    <h4>Announcement</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Model.ImagePath" width="100" alt="image" />
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DatePosted)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DatePosted)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CategoryName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeName)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="Edit" asp-controller="Announcement" asp-route-id="@Model.AnnouncementId">Sửa</a> |
+    <a class="btn btn-danger" asp-action="List" asp-controller="Announcement">Quay Lại</a>
+</div>
