@@ -10,22 +10,26 @@
     ViewData["Title"] = "List Company";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/Company - List.css" />
+}
+
 <h1>Company List</h1>
 
-<table class="table">
+<table class="container">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                <h1>@Html.DisplayNameFor(model => model.Name)</h1>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                <h1>@Html.DisplayNameFor(model => model.Address)</h1>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
+                <h1>@Html.DisplayNameFor(model => model.PhoneNumber)</h1>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                <h1>@Html.DisplayNameFor(model => model.Email)</h1>
             </th>
             <th></th>
         </tr>
@@ -50,7 +54,6 @@
                     <a class="btn btn-primary" asp-action="Edit" asp-controller="Company" asp-route-id="@item.CompanyId">Sửa</a> |
                     <a class="btn btn-primary" asp-action="Detail" asp-controller="Company" asp-route-id="@item.CompanyId">Chi Tiết</a> |
                     <button class="btn btn-danger delete-button" data-id="@item.CompanyId">Xoá</button>
-
                 </td>
             </tr>
         }
