@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\CK-CSharp.bundle.scp.css"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\home.css",
+      "PackagePath": "staticwebassets\\css\\home.css"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -13,8 +17,24 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\At the office.gif",
+      "PackagePath": "staticwebassets\\image\\At the office.gif"
+    },
+    {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\At-the-office-unscreen.gif",
+      "PackagePath": "staticwebassets\\image\\At-the-office-unscreen.gif"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Azaka.png",
       "PackagePath": "staticwebassets\\image\\Azaka.png"
+    },
+    {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Company-amico-removebg-preview.png",
+      "PackagePath": "staticwebassets\\image\\Company-amico-removebg-preview.png"
+    },
+    {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Logo2.png",
+      "PackagePath": "staticwebassets\\image\\Logo2.png"
     },
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Screenshot 2023-09-17 141103.png",

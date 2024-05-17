@@ -1,0 +1,51 @@
+﻿.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    height: 100vh;
+}
+
+.container-left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.container-left h1 {
+    font-size: 60px;
+    font-weight: 700;
+    color: white;
+    text-shadow: #ffffff 1px 0 4px;
+}
+
+.container-left p {
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+}
+
+.Group-btn {
+    display: flex;
+    flex-direction: row;
+    gap: 36px;
+}
+
+.Group-btn a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+    color: #1e252e;
+    padding: 12px 24px;
+    transition: all 0.3s ease-in-out;
+}
+
+.Group-btn a:hover {
+    scale: 1.1;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}

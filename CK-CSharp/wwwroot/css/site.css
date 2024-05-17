@@ -1,5 +1,9 @@
+* {
+    
+}
+
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -18,5 +22,84 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #1e252e;
+}
+
+.nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.Logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.Logo img {
+    width: 70px;
+    height: 70px;
+}
+
+.Logo a {
+    text-decoration: none;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+    .Logo a:hover {
+        scale: 1.1;
+        text-shadow: #ffffff 1px 0 8px;
+    }
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-right: 24px;
+}
+
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 600
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out
+}
+
+.menu a:hover {
+     scale: 1.1;
+     text-shadow: #ffffff 1px 0 8px;
 }

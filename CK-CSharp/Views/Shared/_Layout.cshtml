@@ -7,46 +7,28 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <!-- <link rel="stylesheet" href="~/CK_CSharp.styles.css" asp-append-version="true" /> -->
+    @RenderSection("Styles", required: false)
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CK_CSharp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Company" asp-action="List">Company</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Department" asp-action="List">Department</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="List">Employee</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="List">Category</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Schedule" asp-action="List">Schedule</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Announcement" asp-action="List">Announcement</a>
-                        </li>
-                    </ul>
-                </div>
+        <div class="nav">
+            <div class="Logo">
+                <img src="~/image/Logo2.png" alt="logo" />
+                <a asp-controller="Home" asp-action="Index">Azura</a>
             </div>
-        </nav>
+            <div class="menu">
+               <a asp-controller="Announcement" asp-action="List" class="NavItem">Announcement</a>
+               <a asp-controller="Schedule" asp-action="List" class="NavItem">Schedule</a>
+               <a asp-controller="Category" asp-action="List" class="NavItem">Category</a>
+               <a asp-controller="Employee" asp-action="List" class="NavItem">Employee</a>
+               <a asp-controller="Department" asp-action="List"  class="NavItem">Department</a>
+               <a asp-controller="Company" asp-action="List" class="NavItem">Company</a>
+            </div>
+            <div class="profile">
+                <a href="#">Profile</a>
+                <img src="~/image/animepic2.jpg" alt="profile" />
+            </div>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -56,11 +38,10 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - CK_CSharp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - Made by Mai Hong Quang
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
