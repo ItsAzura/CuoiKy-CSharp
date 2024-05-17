@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\CK-CSharp.bundle.scp.css"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\about.css",
+      "PackagePath": "staticwebassets\\css\\about.css"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\home.css",
       "PackagePath": "staticwebassets\\css\\home.css"
     },
@@ -55,6 +59,10 @@
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\ironman.png",
       "PackagePath": "staticwebassets\\image\\ironman.png"
+    },
+    {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\me.jpg",
+      "PackagePath": "staticwebassets\\image\\me.jpg"
     },
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\js\\site.js",

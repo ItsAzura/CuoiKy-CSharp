@@ -103,3 +103,24 @@ body {
      scale: 1.1;
      text-shadow: #ffffff 1px 0 8px;
 }
+
+.footer {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 24px;
+}
+
+.footer a {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.footer a:hover {
+    scale: 1.1;
+    text-shadow: #ffffff 1px 0 3px;
+}
