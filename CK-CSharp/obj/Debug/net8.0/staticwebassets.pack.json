@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\CK-CSharp.bundle.scp.css"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Add.css",
+      "PackagePath": "staticwebassets\\css\\Add.css"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Company - List.css",
       "PackagePath": "staticwebassets\\css\\Company - List.css"
     },

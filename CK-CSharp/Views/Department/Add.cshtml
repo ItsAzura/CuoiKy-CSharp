@@ -10,22 +10,26 @@
     ViewData["Title"] = "Add Department";
 }
 
-<h1>Add Department</h1>
+@section Styles {
+    <link rel="stylesheet" href="~/css/Add.css" />
+}
+
+<h1 class="Add_title">ADD DEPARTMENT</h1>
 
 <!-- Thêm form để nhập thông tin phòng ban -->
 <form asp-action="Add" method="post">
     <div class="form-group">
-        <label asp-for="Name" class="control-label"></label>
+        <p asp-for="Name" class="Add_lable">Tên Phòng Ban</p>
         <input asp-for="Name" class="form-control" required title="Vui lòng nhập tên phòng ban" />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Description" class="control-label"></label>
+        <p asp-for="Description" class="Add_lable">Mô Tả</p>
         <input asp-for="Description" class="form-control" required title="Vui lòng nhập mô tả phòng ban" />
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="CompanyId" class="control-label"></label>
+        <p asp-for="CompanyId" class="Add_lable">ID Công Ty</p>
         <input asp-for="CompanyId" class="form-control" required title="Vui lòng chọn công ty" />
         <span asp-validation-for="CompanyId" class="text-danger"></span>
         </div>

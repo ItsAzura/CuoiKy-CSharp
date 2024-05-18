@@ -3,15 +3,18 @@ using CK_CSharp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CK_CSharp.Controllers
 {
     public class EmployeeController : Controller
     {
         private readonly EmployeeDbContext dbContext;
-        public EmployeeController(EmployeeDbContext dbContext)
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        public EmployeeController(EmployeeDbContext dbContext, IWebHostEnvironment hostingEnvironment)
         {
             this.dbContext = dbContext;
+            this._hostingEnvironment = hostingEnvironment;
         }
 
         [HttpGet]
@@ -21,7 +24,7 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(Employee employee)
+        public async Task<IActionResult> Add(Employee employee, IFormFile Image)
         {
             // Kiểm tra số điện thoại hợp lệ
             if (!IsValidPhoneNumber(employee.PhoneNumber)) 
@@ -39,6 +42,23 @@ namespace CK_CSharp.Controllers
             }
             employee.DepartmentName = department.Name;
 
+            if (Image == null || Image.Length == 0)
+            {
+                ModelState.AddModelError("Image", "Ảnh là cần thiết.");
+                return View(employee);
+            }
+            var uploadPath = Path.Combine(_hostingEnvironment.WebRootPath, "image");
+            if (!Directory.Exists(uploadPath))
+            {
+                Directory.CreateDirectory(uploadPath);
+            }
+            var filePath = Path.Combine(uploadPath, Image.FileName);
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await Image.CopyToAsync(stream);
+            }
+            employee.ImagePath = "/image/" + Image.FileName;
+
             var newEmployee = new Employee
             {
                 Name = employee.Name,
@@ -46,12 +66,22 @@ namespace CK_CSharp.Controllers
                 PhoneNumber = employee.PhoneNumber,
                 Email = employee.Email,
                 DepartmentId = employee.DepartmentId,
-                DepartmentName = employee.DepartmentName
+                DepartmentName = employee.DepartmentName,
+                ImagePath = employee.ImagePath,
+                CreatedAt = DateTime.Now
             };
 
-            await dbContext.Employees.AddAsync(newEmployee);
+            try
+            {
+                await dbContext.Employees.AddAsync(newEmployee);
 
-            await dbContext.SaveChangesAsync();
+                await dbContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View(employee);
+            }
 
             return RedirectToAction("List", "Employee");
         }
@@ -71,7 +101,9 @@ namespace CK_CSharp.Controllers
                 DepartmentName = dbContext.Departments
                     .Where(d => d.DepartmentId == employee.DepartmentId)
                     .Select(d => d.Name)
-                    .FirstOrDefault() ?? "Unknown"
+                    .FirstOrDefault() ?? "Unknown",
+                ImagePath = employee.ImagePath,
+                CreatedAt = employee.CreatedAt
             }).ToList(); 
 
             return View(employeeViewModels);
@@ -85,7 +117,7 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Employee employee)
+        public async Task<IActionResult> Edit(Employee employee, IFormFile Image)
         {
             var employeeToUpdate = await dbContext.Employees.FindAsync(employee.EmployeeId);
 
@@ -97,10 +129,27 @@ namespace CK_CSharp.Controllers
                     ModelState.AddModelError("PhoneNumber", "Số điện thoại không hợp lệ.");
                     return View(employee);
                 }
+                employeeToUpdate.PhoneNumber = employee.PhoneNumber;
+
+                if (Image == null || Image.Length == 0)
+                {
+                    ModelState.AddModelError("Image", "Ảnh là cần thiết.");
+                    return View(employee);
+                }
+                var uploadPath = Path.Combine(_hostingEnvironment.WebRootPath, "image");
+                if (!Directory.Exists(uploadPath))
+                {
+                    Directory.CreateDirectory(uploadPath);
+                }
+                var filePath = Path.Combine(uploadPath, Image.FileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await Image.CopyToAsync(stream);
+                }
+                employeeToUpdate.ImagePath = "/image/" + Image.FileName;
 
                 employeeToUpdate.Name = employee.Name;
                 employeeToUpdate.Address = employee.Address;
-                employeeToUpdate.PhoneNumber = employee.PhoneNumber;
                 employeeToUpdate.Email = employee.Email;
                 employeeToUpdate.DepartmentId = employee.DepartmentId;
 
@@ -136,6 +185,10 @@ namespace CK_CSharp.Controllers
         public async Task<IActionResult> Detail(int id)
         {
             var employee = await dbContext.Employees.FindAsync(id);
+            if (employee == null)
+            {
+                return NotFound();
+            }
             return View(employee);
         }
 

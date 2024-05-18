@@ -17,7 +17,7 @@
 }
 @if (Model is not null)
 {
-    <form asp-action="Edit" method="post">
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label asp-for="EmployeeId" class="control-label"></label>
             <input asp-for="EmployeeId" class="form-control" readonly />
@@ -48,6 +48,12 @@
             <input asp-for="DepartmentId" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
+        <div class="form-group">
+            <label asp-for="Image" class="control-label"></label>
+            <input asp-for="Image" class="form-control" required type="file" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+        </div>
+
         <button type="submit" class="btn btn-primary">Lưu</button>
         <a class="btn btn-danger" asp-action="List" asp-controller="Employee">Huỷ</a>
     </form>

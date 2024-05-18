@@ -10,36 +10,40 @@
     ViewData["Title"] = "Add Schedule";
 }
 
-<h1>Add Schedule</h1>
+@section Styles {
+    <link rel="stylesheet" href="~/css/Add.css" />
+}
+
+<h1 class="Add_title">ADD SCHEDULE</h1>
 
 <form asp-action="Add" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label asp-for="Name" class="control-label"></label>
+        <p asp-for="Name" class="Add_lable">Tên Lịch Trình</p>
         <input asp-for="Name" class="form-control" required />
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Description" class="control-label"></label>
+        <p asp-for="Description" class="Add_lable">Mô Tả</p>
         <input asp-for="Description" class="form-control" required  />
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="StartDate" class="control-label"></label>
+        <p asp-for="StartDate" class="Add_lable">Thời Gian Bắt Đầu</p>
         <input asp-for="StartDate" class="form-control" required />
         <span asp-validation-for="StartDate" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="EndDate" class="control-label"></label>
+        <p asp-for="EndDate" class="Add_lable">Thời Gian Kết Thúc</p>
         <input asp-for="EndDate" class="form-control" required  />
         <span asp-validation-for="EndDate" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="EmployeeId" class="control-label"></label>
+        <p asp-for="EmployeeId" class="Add_lable">ID Nhân Viên</p>
         <input asp-for="EmployeeId" class="form-control" required  />
         <span asp-validation-for="EmployeeId" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Image" class="control-label"></label>
+        <p asp-for="Image" class="Add_lable">Ảnh Lịch Trình</p>
         <input asp-for="Image" class="form-control" required type="file" />
         <span asp-validation-for="Image" class="text-danger"></span>
     </div>

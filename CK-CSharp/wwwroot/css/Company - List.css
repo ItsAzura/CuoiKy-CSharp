@@ -4,6 +4,30 @@
     margin-bottom: 24px;
 }
 
+
+table.container {
+    margin-top: 24px;
+}
+
+a.addBtn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+a.addBtn:hover {
+    transform: scale(1.1);
+    color: white;
+}
+
 .container th h1 {
     font-weight: bold;
     font-size: 1.2em;

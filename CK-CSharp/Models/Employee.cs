@@ -37,5 +37,13 @@ namespace CK_CSharp.Models
         public int? CompanyId { get; set; }
 
         public Company Company { get; set; }
+
+        [NotMapped]
+        public IFormFile Image { get; set; }
+
+        [Display(Name = "Ảnh đại diện")]
+        public string ImagePath { get; set; }
+
+        public DateTime? CreatedAt { get; set; }
     }
 }
