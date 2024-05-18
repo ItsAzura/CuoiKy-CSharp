@@ -1,0 +1,30 @@
+﻿h1.Detail_title {
+    color: white;
+    text-shadow: 1px 0px 4px #ffffff;
+    margin-top: 32px;
+}
+
+p.Detail_Name {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+p.Detail_value {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 16px;
+    margin-bottom: 12px;
+}
+
+img.Detail_img {
+    width: 200px;
+    height: 200px;
+    border-radius: 4px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    object-fit: cover;
+}

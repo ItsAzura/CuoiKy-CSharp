@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\css\\Department - List .css"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Detail.css",
+      "PackagePath": "staticwebassets\\css\\Detail.css"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Edit.css",
       "PackagePath": "staticwebassets\\css\\Edit.css"
     },

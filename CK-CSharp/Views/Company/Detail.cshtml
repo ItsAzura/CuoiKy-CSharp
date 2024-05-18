@@ -10,35 +10,38 @@
     ViewData["Title"] = "Detail Company";
 }
 
-<h1>Company Detail</h1>
+@section Styles {
+    <link rel="stylesheet" href="~/css/Detail.css" />
+}
+
+<h1 class="Detail_title">Detail Company: @Html.DisplayFor(model => model.Name)</h1>
 
 <div>
-    <h4>Company</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.Name):</p>
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.Name)</p>
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.Address):</p>
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.Address)</p>
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.PhoneNumber):</p>
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.PhoneNumber)</p>
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.Email):</p>  
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.Email)</p>
         </dd>
     </dl>
 </div>

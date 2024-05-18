@@ -10,47 +10,51 @@
     ViewData["Title"] = "Detail Schedule";
 }
 
-<h1>Schedule Detail</h1>
+@section Styles {
+    <link rel="stylesheet" href="~/css/Detail.css" />
+}
+
+<h1 class="Detail_title">Detail Schdule: @Html.DisplayFor(model => model.Name)</h1>
 
 <div>
     <h4>Schedule</h4>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-sm-3">
             
          </dt>
-        <dd class="col-sm-10">
-            <img src="@Model.ImagePath" width="200" alt="image" />
+        <dd class="col-sm-8">
+            <img src="@Model.ImagePath" alt="image" class="Detail_img" />
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.Name):</p>
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.Name)</p>
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.Description):</p>
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.Description)</p>
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StartDate)
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.StartDate):</p>
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StartDate)
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.StartDate)</p>
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EndDate)
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.EndDate):</p>
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EndDate)
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.EndDate)</p>
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmployeeName)
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.EmployeeName):</p>
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EmployeeName)
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.EmployeeName)</p>
         </dd>
     </dl>
 </div>
