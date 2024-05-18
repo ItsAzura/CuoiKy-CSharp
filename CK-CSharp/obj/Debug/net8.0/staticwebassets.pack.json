@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\Company - List.css"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Department - List .css",
+      "PackagePath": "staticwebassets\\css\\Department - List .css"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\about.css",
       "PackagePath": "staticwebassets\\css\\about.css"
     },

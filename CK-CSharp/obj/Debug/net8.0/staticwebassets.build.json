@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "S98+3vVKKWce7Q20b+4hmjvORg1pQOf3RmlwEhiRm/Q=",
+  "Hash": "JzmMMl81JDXvfynnjmukanGh0gZn4Lx8dR662VEb+fc=",
   "Source": "CK-CSharp",
   "BasePath": "_content/CK-CSharp",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Company - List.css"
+    },
+    {
+      "Identity": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Department - List .css",
+      "SourceId": "CK-CSharp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\",
+      "BasePath": "_content/CK-CSharp",
+      "RelativePath": "css/Department - List .css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Department - List .css"
     },
     {
       "Identity": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\home.css",
