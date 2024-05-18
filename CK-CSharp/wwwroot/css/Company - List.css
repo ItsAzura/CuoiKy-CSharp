@@ -4,28 +4,30 @@
     margin-bottom: 24px;
 }
 
-
 table.container {
     margin-top: 24px;
 }
 
-a.addBtn {
-    background-color: #4CAF50;
-    border: none;
+a.List_Add_Btn {
+    background-color: #1F2739;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 24px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin-top: 24px;
-    cursor: pointer;
-    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
 }
 
-a.addBtn:hover {
+a.List_Add_Btn:hover {
     transform: scale(1.1);
     color: white;
+    background-color: dodgerblue;
+    border-radius: 5px;
 }
 
 .container th h1 {

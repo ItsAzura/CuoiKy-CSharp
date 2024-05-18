@@ -10,16 +10,22 @@
     ViewData["Title"] = "List Category";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/Department - List .css" />
+}
+
 <h1>Category List</h1>
 
-<table class="table">
+<a class="btn btn-primary addBtn" asp-action="Add" asp-controller="Department">Thêm</a> |
+
+<table class="container">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                <h1>@Html.DisplayNameFor(model => model.Name)</h1>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
+                <h1>@Html.DisplayNameFor(model => model.Description)</h1>  
             </th>
             <th></th>
         </tr>
