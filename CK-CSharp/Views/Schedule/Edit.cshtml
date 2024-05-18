@@ -10,7 +10,11 @@
     ViewData["Title"] = "Edit Schedule";
 }
 
-<h1>Edit Schedule</h1>
+@section Styles {
+    <link rel="stylesheet" href="~/css/Edit.css" />
+}
+
+<h1 class="Add_title">EDIT SCHEDULE</h1>
 
 @if (Model is null)
 {
@@ -21,43 +25,43 @@
 {
     <form asp-action="Edit" method="post" enctype="multipart/form-data">
         <div class="form-group row">
-            <label asp-for="ScheduleId" class="col-sm-2 col-form-label"></label>
+            <p asp-for="ScheduleId" class="Add_lable">ID Lịch Trình</p>
             <input asp-for="ScheduleId" class="form-control" readonly />
             <span asp-validation-for="ScheduleId" class="text-danger"></span>
         </div>
-        <div class="form-group row">
-            <label asp-for="Name" class="col-sm-2 col-form-label"></label>
-            <input asp-for="Name" class="form-control" />
+        <div class="form-group">
+            <p asp-for="Name" class="Add_lable">Tên Lịch Trình</p>
+            <input asp-for="Name" class="form-control" required />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
-        <div class="form-group row">
-            <label asp-for="Description" class="col-sm-2 col-form-label"></label>
-            <input asp-for="Description" class="form-control" />
+        <div class="form-group">
+            <p asp-for="Description" class="Add_lable">Mô Tả</p>
+            <input asp-for="Description" class="form-control" required />
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
-        <div class="form-group row">
-            <label asp-for="StartDate" class="col-sm-2 col-form-label"></label>
-            <input asp-for="StartDate" class="form-control" />
+        <div class="form-group">
+            <p asp-for="StartDate" class="Add_lable">Thời Gian Bắt Đầu</p>
+            <input asp-for="StartDate" class="form-control" required />
             <span asp-validation-for="StartDate" class="text-danger"></span>
         </div>
-        <div class="form-group row">
-            <label asp-for="EndDate" class="col-sm-2 col-form-label"></label>
-            <input asp-for="EndDate" class="form-control" />
+        <div class="form-group">
+            <p asp-for="EndDate" class="Add_lable">Thời Gian Kết Thúc</p>
+            <input asp-for="EndDate" class="form-control" required />
             <span asp-validation-for="EndDate" class="text-danger"></span>
         </div>
-        <div class="form-group row">
-            <label asp-for="EmployeeId" class="col-sm-2 col-form-label"></label>
-            <input asp-for="EmployeeId" class="form-control" />
+        <div class="form-group">
+            <p asp-for="EmployeeId" class="Add_lable">ID Nhân Viên</p>
+            <input asp-for="EmployeeId" class="form-control" required />
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="form-group row">
-            <label asp-for="EmployeeName" class="col-sm-2 col-form-label"></label>
+            <p asp-for="EmployeeName" class="Add_lable">Tên Nhân Viên</p>
             <input asp-for="EmployeeName" class="form-control" readonly/>
             <span asp-validation-for="EmployeeName" class="text-danger"></span>
         </div>
-        <div class="form-group row">
-            <label asp-for="Image" class="col-sm-2 col-form-label"></label>
-            <input asp-for="Image" class="form-control" type="file" />
+        <div class="form-group">
+            <p asp-for="Image" class="Add_lable">Ảnh Lịch Trình</p>
+            <input asp-for="Image" class="form-control" required type="file" />
             <span asp-validation-for="Image" class="text-danger"></span>
         </div>
 

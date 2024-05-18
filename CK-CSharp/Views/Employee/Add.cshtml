@@ -41,13 +41,14 @@
     <div class="form-group">
         <p asp-for="DepartmentId" class="Add_lable">Mã Phòng Ban</p>
         <input asp-for="DepartmentId" class="form-control" required  />
-        <span asp-validation-for="Email" class="text-danger"></span>
+        <span asp-validation-for="DepartmentId" class="text-danger"></span>
     </div>
     <div class="form-group">
         <p asp-for="Image" class="Add_lable">Ảnh Đại Diện</p>
         <input asp-for="Image" class="form-control" required type="file" />
         <span asp-validation-for="Image" class="text-danger"></span>
     </div>
+
     <button type="submit" class="btn btn-primary">Thêm</button>
     <a class="btn btn-danger" asp-action="List" asp-controller="Employee">Huỷ</a>
 </form>

@@ -9,7 +9,11 @@
     ViewData["Title"] = "Edit Employee";
 }
 
-<h1>Edit Employee</h1>
+@section Styles {
+    <link rel="stylesheet" href="~/css/Edit.css" />
+}
+
+<h1 class="Add_title">EDIT EMPLOYEE</h1>
 
 @if (Model is null)
 {
@@ -19,37 +23,37 @@
 {
     <form asp-action="Edit" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <label asp-for="EmployeeId" class="control-label"></label>
+            <p asp-for="EmployeeId" class="Add_lable">ID Nhân Viên</p>
             <input asp-for="EmployeeId" class="form-control" readonly />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Name" class="control-label"></label>
-            <input asp-for="Name" class="form-control" />
+            <p asp-for="Name" class="Add_lable">Tên Nhân Viên</p>
+            <input asp-for="Name" class="form-control" required />
             <span asp-validation-for="Name" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Address" class="control-label"></label>
-            <input asp-for="Address" class="form-control" />
+            <p asp-for="Address" class="Add_lable">Địa Chỉ</p>
+            <input asp-for="Address" class="form-control" required />
             <span asp-validation-for="Address" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="PhoneNumber" class="control-label"></label>
-            <input asp-for="PhoneNumber" class="form-control" />
+            <p asp-for="PhoneNumber" class="Add_lable">Số Điện Thoại</p>
+            <input asp-for="PhoneNumber" class="form-control" required />
             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Email" class="control-label"></label>
-            <input asp-for="Email" class="form-control" />
+            <p asp-for="Email" class="Add_lable">Email</p>
+            <input asp-for="Email" class="form-control" required />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="DepartmentId" class="control-label"></label>
-            <input asp-for="DepartmentId" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
+            <p asp-for="DepartmentId" class="Add_lable">Mã Phòng Ban</p>
+            <input asp-for="DepartmentId" class="form-control" required />
+            <span asp-validation-for="DepartmentId" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Image" class="control-label"></label>
+            <p asp-for="Image" class="Add_lable">Ảnh Đại Diện</p>
             <input asp-for="Image" class="form-control" required type="file" />
             <span asp-validation-for="Image" class="text-danger"></span>
         </div>
