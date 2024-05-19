@@ -4,6 +4,32 @@
     margin-bottom: 24px;
 }
 
+div.Company_list_feature {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input.Company_list_searchbar {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+button.Company_list_searchbarBtn {
+    background-color: #1F2739;
+    color: white;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 table.container {
     margin-top: 24px;
 }

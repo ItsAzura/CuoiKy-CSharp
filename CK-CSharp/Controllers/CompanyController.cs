@@ -46,10 +46,17 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(string searchString)
         {
-            var companies = await dbContext.Companies.ToListAsync();
-            return View(companies);
+            var companies = from c in dbContext.Companies
+                            select c;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                companies = companies.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(await companies.ToListAsync());
         }
 
         [HttpGet]

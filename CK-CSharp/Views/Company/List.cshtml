@@ -16,9 +16,18 @@
 
 <h1>Company List</h1>
 
-<a class="btn btn-primary List_Add_Btn" asp-action="Add" asp-controller="Company">Thêm</a>
+<div class="Company_list_feature">
+    <form method="get" asp-controller="Company" asp-action="List">
+        <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Search by name..." class="Company_list_searchbar"/>
+        <button type="submit" class="Company_list_searchbarBtn">Search</button>
+    </form>
 
-<table class="container">
+    <a class="btn btn-primary List_Add_Btn" asp-action="Add" asp-controller="Company">Thêm</a>
+</div>
+
+
+
+<table class="Company_container">
     <thead>
         <tr>
             <th>
