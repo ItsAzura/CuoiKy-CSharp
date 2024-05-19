@@ -4,6 +4,50 @@
     margin-bottom: 24px;
 }
 
+div.Company_list_feature {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.Company_list_feature form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+input.Company_list_searchbar {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+button.Company_list_searchbarBtn {
+    background-color: #1F2739;
+    color: white;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+}
+
+button.Company_list_searchbarBtn:hover {
+    transform: scale(1.05);
+    box-shadow:
+    -webkit-box-shadow:0px 0px 10px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
+}
+
 table.container {
     margin-top: 24px;
 }

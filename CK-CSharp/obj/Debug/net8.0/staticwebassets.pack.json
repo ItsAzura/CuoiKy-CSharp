@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\css\\Announcement - List.css"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Category - List.css",
+      "PackagePath": "staticwebassets\\css\\Category - List.css"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Company - List.css",
       "PackagePath": "staticwebassets\\css\\Company - List.css"
     },

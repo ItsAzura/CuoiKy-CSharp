@@ -4,7 +4,7 @@
     margin-bottom: 24px;
 }
 
-div.Company_list_feature {
+div.Category_list_feature {
     margin-top: 24px;
     display: flex;
     flex-direction: row;
@@ -12,7 +12,7 @@ div.Company_list_feature {
     align-items: center;
 }
 
-div.Company_list_feature form {
+.Category_list_feature form {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -20,16 +20,16 @@ div.Company_list_feature form {
     gap: 12px;
 }
 
-input.Company_list_searchbar {
+input.Category_list_searchbar {
     width: 80%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     border: 2px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
-button.Company_list_searchbarBtn {
+button.Category_list_searchbarBtn {
     background-color: #1F2739;
     color: white;
     padding: 12px 20px;
@@ -40,7 +40,7 @@ button.Company_list_searchbarBtn {
     transition: all 0.3s ease-in-out;
 }
 
-button.Company_list_searchbarBtn:hover {
+button.Category_list_searchbarBtn:hover {
     transform: scale(1.05);
     box-shadow:
     -webkit-box-shadow:0px 0px 10px 0px rgba(255,255,255,0.41);
@@ -48,7 +48,7 @@ button.Company_list_searchbarBtn:hover {
     box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
 }
 
-table.container {
+table.Category_List_container {
     margin-top: 24px;
 }
 
@@ -75,7 +75,7 @@ a.addBtn:hover {
     border-radius: 5px;
 }
 
-.container th h1 {
+.Category_List_container th h1 {
     font-weight: bold;
     font-size: 1.2em;
     text-align: left;
@@ -83,7 +83,7 @@ a.addBtn:hover {
     text-shadow: #ffffff 1px 0 2px;
 }
 
-.container td {
+.Category_List_container td {
     font-weight: normal;
     font-size: 1em;
     -webkit-box-shadow: 0 2px 2px -2px #0E1119;
@@ -91,7 +91,7 @@ a.addBtn:hover {
     box-shadow: 0 2px 2px -2px #0E1119;
 }
 
-.container {
+.Category_List_container {
     text-align: left;
     overflow: hidden;
     width: 100%;
@@ -100,46 +100,43 @@ a.addBtn:hover {
     padding: 0 0 8em 0;
 }
 
-.container td, .container th {
+.Category_List_container td, .Category_List_container th {
     padding-bottom: 2%;
     padding-top: 2%;
     padding-left: 2%;
 }
 
-.container tr:nth-child(odd) {
+.Category_List_container tr:nth-child(odd) {
     background-color: #323C50;
 }
 
-.container tr:nth-child(even) {
+.Category_List_container tr:nth-child(even) {
     background-color: #2C3446;
 }
 
-.container th {
-    background-color: #1F2739;
+.Category_List_container th {
+     background-color: #1F2739;
 }
 
-.container td {
-    color: white;
+.Category_List_container td {
+     color: white;
 }
 
-.container tr:hover {
-    background-color: #464A52;
-    -webkit-box-shadow: 0 6px 6px -6px #0E1119;
-    -moz-box-shadow: 0 6px 6px -6px #0E1119;
-    box-shadow: 0 6px 6px -6px #0E1119;
- }
-
-.container td:hover {
-  background-color: white;
-  color: black;
-  font-weight: bold;
-  
-  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
-  transform: translate3d(6px, -6px, 0);
-  
-  transition-delay: 0s;
-  transition-duration: 0.4s;
-  transition-property: all;
-  transition-timing-function: line;
+.Category_List_container tr:hover {
+     background-color: #464A52;
+     -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+     -moz-box-shadow: 0 6px 6px -6px #0E1119;
+     box-shadow: 0 6px 6px -6px #0E1119;
 }
 
+.Category_List_container td:hover {
+     background-color: white;
+     color: black;
+     font-weight: bold;
+     box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+     transform: translate3d(6px, -6px, 0);
+     transition-delay: 0s;
+     transition-duration: 0.4s;
+     transition-property: all;
+     transition-timing-function: line;
+}

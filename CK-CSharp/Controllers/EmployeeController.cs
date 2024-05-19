@@ -102,11 +102,21 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(string searchString)
         {
-            var employees = await dbContext.Employees.ToListAsync(); 
-            
-            var employeeViewModels = employees.Select(employee => new Employee
+            ViewData["EmployeeCurrentFilter"] = searchString;
+
+            var employees = from e in dbContext.Employees
+                            select e;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                employees = employees.Where(e => e.Name.Contains(searchString));
+            }
+
+            var employeeList = await employees.ToListAsync();
+
+            var employeeViewModels = employeeList.Select(employee => new Employee
             {
                 EmployeeId = employee.EmployeeId,
                 Name = employee.Name,
@@ -119,7 +129,7 @@ namespace CK_CSharp.Controllers
                     .FirstOrDefault() ?? "Unknown",
                 ImagePath = employee.ImagePath,
                 CreatedAt = employee.CreatedAt
-            }).ToList(); 
+            }).ToList();
 
             return View(employeeViewModels);
         }

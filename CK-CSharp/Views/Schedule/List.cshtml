@@ -17,6 +17,10 @@
 <h1 class="Schedule_list_title">Schedule List</h1>
 
 <div class="Schedule_list_feature">
+    <form method="get" asp-controller="Schedule" asp-action="List">
+        <input type="text" name="searchString" value="@ViewData["ScheduleCurrentFilter"]" placeholder="Search by name..." class="Schedule_list_searchbar" />
+        <button type="submit" class="Schedule_list_searchbarBtn">Search</button>
+    </form>
     <a asp-action="Add" asp-controller="Schedule" class="Schedule_list_btnCreate">Thêm mới</a>
 </div>
 
@@ -28,7 +32,7 @@
             <div class="Schedule_list_itemDetail">
                 <h3>@item.Name</h3>
                 <p>(@item.StartDate - @item.EndDate)</p>
-                <p class="Schedule_list_itemDetail_Descrip">@item.EmployeeName</p>
+                <p class="Schedule_list_itemDetail_Descrip">@item.Name</p>
                 <div class="Schedule_list_groupBtn">
                     <a class="Schedule_list_btnDetail" asp-action="Detail" asp-controller="Schedule" asp-route-id="@item.ScheduleId">Chi Tiết</a>
                     <button class="delete-button Schedule_list_btnDelete" data-id="@item.ScheduleId">Xoá</button>

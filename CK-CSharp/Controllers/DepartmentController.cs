@@ -39,10 +39,18 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(string searchString)
         {
-            var departments = await dbContext.Departments.ToListAsync();
-            return View(departments);
+            ViewData["DepartmentCurrentFilter"] = searchString;
+
+            var departments = from d in dbContext.Departments select d;
+            
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                departments = departments.Where(s => s.Name.Contains(searchString));
+            
+            }
+            return View(await departments.ToListAsync());
         }
 
         [HttpGet]

@@ -106,10 +106,19 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(string searchString)
         {
-            var announcements = await dbContext.announcements.ToListAsync();
-            return View(announcements);
+            ViewData["AnnouncementCurrentFilter"] = searchString;
+
+            var announcements = from a in dbContext.announcements
+                            select a;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                announcements = announcements.Where(a => a.Title.Contains(searchString));
+            }
+
+            return View(await announcements.ToListAsync());
         }
 
         [HttpGet]

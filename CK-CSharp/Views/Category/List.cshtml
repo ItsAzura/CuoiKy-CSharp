@@ -11,14 +11,21 @@
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/Department - List .css" />
+    <link rel="stylesheet" href="~/css/Category - List.css" />
 }
 
 <h1>Category List</h1>
 
-<a class="btn btn-primary addBtn" asp-action="Add" asp-controller="Department">Thêm</a> |
+<div class="Category_list_feature">
+    <form method="get" asp-controller="Category" asp-action="List">
+        <input type="text" name="searchString" value="@ViewData["CategoryCurrentFilter"]" placeholder="Search by name..." class="Category_list_searchbar" />
+        <button type="submit" class="Category_list_searchbarBtn">Search</button>
+    </form>
 
-<table class="container">
+    <a class="btn btn-primary addBtn" asp-action="Add" asp-controller="Category">Thêm</a>
+</div>
+
+<table class="Category_List_container">
     <thead>
         <tr>
             <th>
@@ -47,8 +54,8 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    <a class="btn btn-primary" asp-action="Edit" asp-controller="Category" asp-route-id="@item.CategoryId">Sửa</a> |
-                    <a class="btn btn-primary" asp-action="Detail" asp-controller="Category" asp-route-id="@item.CategoryId">Chi Tiết</a> |
+                    <a class="btn btn-primary" asp-action="Edit" asp-controller="Category" asp-route-id="@item.CategoryId">Sửa</a>
+                    <a class="btn btn-primary" asp-action="Detail" asp-controller="Category" asp-route-id="@item.CategoryId">Chi Tiết</a>
                     <button class="btn btn-danger delete-button" data-id="@item.CategoryId">Xoá</button>
                 </td>
             </tr>

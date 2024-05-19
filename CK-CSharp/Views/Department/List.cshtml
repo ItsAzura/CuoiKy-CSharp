@@ -16,7 +16,16 @@
 
 <h1>Department List</h1>
 
-<a class="btn btn-primary addBtn" asp-action="Add" asp-controller="Department">Thêm</a> |
+<div class="Company_list_feature">
+    <form method="get" asp-controller="Department" asp-action="List">
+        <input type="text" name="searchString" value="@ViewData["DepartmentCurrentFilter"]" placeholder="Search by name..." class="Company_list_searchbar" />
+        <button type="submit" class="Company_list_searchbarBtn">Search</button>
+    </form>
+
+    <a class="btn btn-primary addBtn" asp-action="Add" asp-controller="Department">Thêm</a>
+</div>
+
+
 
 <table class="container">
     <thead>

@@ -17,6 +17,11 @@
 <h1 class="Employee_list_title">Employee List</h1>
 
 <div class="Employee_list_feature">
+     <form method="get" asp-controller="Employee" asp-action="List">
+        <input type="text" name="searchString" value="@ViewData["EmployeeCurrentFilter"]" placeholder="Search by name..." class="Employee_list_searchbar" />
+        <button type="submit" class="Employee_list_searchbarBtn">Search</button>
+    </form>
+
     <a asp-action="Add" asp-controller="Employee" class="Employee_list_btnCreate">Thêm mới</a>
 </div>
 
