@@ -17,6 +17,11 @@
 <h1 class="Announcement_list_title">Announcement List</h1>
 
 <div class="Announcement_list_feature">
+    <form method="get" asp-controller="Announcement" asp-action="List">
+        <input type="text" name="searchString" value="@ViewData["AnnouncementCurrentFilter"]" placeholder="Search by name..." class="Announcement_list_searchbar" />
+        <button type="submit" class="Announcement_list_searchbarBtn">Search</button>
+    </form>
+
     <a asp-action="Add" asp-controller="Announcement" class="Announcement_list_btnCreate">Thêm mới</a>
 </div>
 
