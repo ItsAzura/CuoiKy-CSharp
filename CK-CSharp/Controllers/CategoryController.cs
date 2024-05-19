@@ -37,10 +37,19 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(string searchString)
         {
-            var categories = await dbContext.Categories.ToListAsync();
-            return View(categories);
+            ViewData["CategoryCurrentFilter"] = searchString;
+
+            var categories = from c in dbContext.Categories
+                             select c;
+            
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                categories = categories.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(await categories.ToListAsync());
         }
 
         [HttpGet]
