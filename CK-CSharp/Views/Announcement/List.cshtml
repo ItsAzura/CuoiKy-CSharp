@@ -17,10 +17,19 @@
 <h1 class="Announcement_list_title">Announcement List</h1>
 
 <div class="Announcement_list_feature">
-    <form method="get" asp-controller="Announcement" asp-action="List">
-        <input type="text" name="searchString" value="@ViewData["AnnouncementCurrentFilter"]" placeholder="Search by name..." class="Announcement_list_searchbar" />
-        <button type="submit" class="Announcement_list_searchbarBtn">Search</button>
-    </form>
+    <div class="Announcement_list_searchfilter">
+        <form method="get" asp-controller="Announcement" asp-action="List" class="Announcement_list_search">
+            <input type="text" name="searchString" value="@ViewData["AnnouncementCurrentFilter"]" placeholder="Search by name..." class="Announcement_list_searchbar" />
+            <button type="submit" class="Announcement_list_searchbarBtn">Search</button>
+        </form>
+        <form method="get" asp-controller="Announcement" asp-action="List" class="Announcement_list_filter">
+            <p class="Announcement_list_filterLaber" for="minSalary">Start Day:</p>
+            <input class="Announcement_list_filterInput" type="text" name="startDate" value="@ViewData["StartDate"]" placeholder="dd/MM/yyyy" />
+            <p class="Announcement_list_filterLaber" for="maxSalary">End Day:</p>
+            <input class="Announcement_list_filterInput" type="text" name="endDate" value="@ViewData["EndDate"]" placeholder="dd/MM/yyyy" />
+            <button type="submit" class="Announcement_list_searchbarBtn">Lọc</button>
+        </form>
+    </div>
 
     <a asp-action="Add" asp-controller="Announcement" class="Announcement_list_btnCreate">Thêm mới</a>
 </div>

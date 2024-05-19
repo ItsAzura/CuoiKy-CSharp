@@ -2,6 +2,7 @@
 using CK_CSharp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -11,10 +12,12 @@ namespace CK_CSharp.Controllers
     {
         private readonly EmployeeDbContext dbContext;
         private readonly IWebHostEnvironment _hostingEnvironment;
-        public AnnouncementController(EmployeeDbContext dbContext, IWebHostEnvironment hostingEnvironment)
+        private readonly ILogger<ScheduleController> _logger;
+        public AnnouncementController(EmployeeDbContext dbContext, IWebHostEnvironment hostingEnvironment, ILogger<ScheduleController> logger)
         {
             this.dbContext = dbContext;
             this._hostingEnvironment = hostingEnvironment;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -106,20 +109,63 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List(string searchString)
+        public async Task<IActionResult> List(string searchString, string startDate, string endDate)
         {
+            //Lấy giá trị từ view để giữ giá trị filter khi chuyển trang
             ViewData["AnnouncementCurrentFilter"] = searchString;
+            ViewData["StartDate"] = startDate;
+            ViewData["EndDate"] = endDate;
 
-            var announcements = from a in dbContext.announcements
-                            select a;
+            //Tạo truy vấn LINQ để lấy tất cả thông tin từ bảng announcements.
+            var announcements = from a in dbContext.announcements select a; 
 
+            //Kiểm tra xem searchString có giá trị không
             if (!string.IsNullOrEmpty(searchString))
             {
                 announcements = announcements.Where(a => a.Title.Contains(searchString));
             }
 
-            return View(await announcements.ToListAsync());
+            //Thực hiện truy vấn và lấy kết quả dưới dạng danh sách, sử dụng AsNoTracking() để tăng hiệu suất.
+            var announcementsList = await announcements.AsNoTracking().ToListAsync();
+
+            //Kiểm tra xem startDate có giá trị không.
+            if (!string.IsNullOrEmpty(startDate))
+            {
+                //Kiểm tra xem startDate có đúng định dạng không.
+                if (DateTime.TryParseExact(startDate, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime parsedStartDate))
+                {
+                    //Lọc danh sách thông báo theo startDate.
+                    announcementsList = announcementsList.Where(s => DateTime.ParseExact(s.DatePosted, "dd/MM/yyyy", null) >= parsedStartDate).ToList();
+                    //Ghi log thông báo đã lọc theo startDate.
+                    _logger.LogInformation("Filtered by start date ({StartDate}), remaining count: {Count}", startDate, announcementsList.Count);
+                }
+                else
+                {
+                    ModelState.AddModelError("startDate", "Định dạng ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.");
+                }
+            }
+
+            //Kiểm tra xem endDate có giá trị không.
+            if (!string.IsNullOrEmpty(endDate))
+            {
+                //Kiểm tra xem endDate có đúng định dạng không.
+                if (DateTime.TryParseExact(endDate, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime parsedEndDate))
+                {
+                    //Lọc danh sách thông báo theo endDate.
+                     announcementsList = announcementsList.Where(s => DateTime.ParseExact(s.DatePosted, "dd/MM/yyyy", null) <= parsedEndDate).ToList();
+                    //Ghi log thông báo đã lọc theo endDate.
+                    _logger.LogInformation("Filtered by end date ({EndDate}), remaining count: {Count}", endDate, announcementsList.Count);
+                }
+                else
+                {
+                    ModelState.AddModelError("endDate", "Định dạng ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.");
+                }
+            }
+
+            //Trả về view với danh sách thông báo đã được lọc.
+            return View(announcementsList);
         }
+
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)

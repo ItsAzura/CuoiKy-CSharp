@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lKqkH3QluMQgioOj+XhGYpIzPMkykdBDVpCoG7Q5Ej4=",
+  "Hash": "z9pUn18Whu8lGCABA3WQlBrPxzFMORGkkxEEBaeJvB8=",
   "Source": "CK-CSharp",
   "BasePath": "_content/CK-CSharp",
   "Mode": "Default",
@@ -321,6 +321,25 @@
       "OriginalItemSpec": "wwwroot\\image\\370098924_344608994687168_2495910573352098424_n.png"
     },
     {
+      "Identity": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\370212399_685731706561697_8262309277258460353_n.png",
+      "SourceId": "CK-CSharp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\",
+      "BasePath": "_content/CK-CSharp",
+      "RelativePath": "image/370212399_685731706561697_8262309277258460353_n.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\370212399_685731706561697_8262309277258460353_n.png"
+    },
+    {
       "Identity": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\animepic2.jpg",
       "SourceId": "CK-CSharp",
       "SourceType": "Discovered",
@@ -566,6 +585,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\image\\Screenshot 2023-09-17 141103.png"
+    },
+    {
+      "Identity": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Screenshot 2023-10-02 210623.png",
+      "SourceId": "CK-CSharp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\",
+      "BasePath": "_content/CK-CSharp",
+      "RelativePath": "image/Screenshot 2023-10-02 210623.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\Screenshot 2023-10-02 210623.png"
     },
     {
       "Identity": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Screenshot 2023-10-04 215352.png",
