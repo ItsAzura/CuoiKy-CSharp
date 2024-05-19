@@ -1,0 +1,124 @@
+﻿h1.Employee_list_title {
+    margin-top: 20px;
+    color: white;
+    text-shadow: #ffffff 1px 0 4px;
+}
+
+a.Employee_list_btnCreate {
+    background-color: #6B6ECC;
+    background: linear-gradient(45deg, #04051dea 0%, #2b566e 100%);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+    align-items: center;
+}
+
+a.Employee_list_btnCreate:hover {
+    transform: scale(1.05);
+    border: 1px solid white;
+    box-shadow:
+    -webkit-box-shadow:0px 0px 20px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 20px 0px rgba(255,255,255,0.41);
+}
+
+.Employee_list_container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px auto;
+}
+
+.Employee_list_item {
+    background-color: #6B6ECC;
+    background: linear-gradient(45deg, #04051dea 0%, #2b566e 100%);
+    border-radius: 12px;
+    border: 1px solid black;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    padding: 15px;
+    margin: 10px;
+    width: calc(25% - 20px);
+    height: 350px;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    color: black;
+}
+
+.Employee_list_item:hover {
+    transform: scale(1.05);
+    border: 1px solid white;
+    box-shadow:
+    -webkit-box-shadow:0px 0px 25px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 25px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 25px 0px rgba(255,255,255,0.41);
+}
+
+.Employee_list_item:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+}
+
+img.Employee_list_img {
+    border-radius: 5px;
+    margin-bottom: 12px;
+    margin-top: 10px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.Employee_list_item h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-top: 12px;
+    color: white;
+}
+
+.Employee_list_groupBtn {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+a.Employee_list_btnDetail {
+    background-color: rgb(33 150 243);
+    border-radius: 5px;
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+    align-items: center;
+}
+
+a.Employee_list_btnDetail:hover {
+    transform: scale(1.05);
+    box-shadow:
+    -webkit-box-shadow:0px 0px 20px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 20px 0px rgba(255,255,255,0.41);
+}
+
+button.Employee_list_btnDelete {
+    background-color: #EF665B;
+    border-radius: 5px;
+    color: white;
+    padding: 6px 12px;
+    transition: all 0.5s ease-in-out;
+    align-items: center;
+    border: none;
+}
+
+button.Employee_list_btnDelete:hover {
+    transform: scale(1.05);
+    box-shadow:
+    -webkit-box-shadow:0px 0px 20px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 20px 0px rgba(255,255,255,0.41);
+}

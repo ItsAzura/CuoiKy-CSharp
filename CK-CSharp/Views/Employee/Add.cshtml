@@ -24,6 +24,11 @@
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="form-group">
+        <p asp-for="Dob" class="Add_lable">Ngày Sinh</p>
+        <input asp-for="Dob" class="form-control" required />
+        <span asp-validation-for="Dob" class="text-danger"></span>
+    </div>
+    <div class="form-group">
         <p asp-for="Address" class="Add_lable">Địa Chỉ</p>
         <input asp-for="Address" class="form-control" required  />
         <span asp-validation-for="Address" class="text-danger"></span>
@@ -37,6 +42,16 @@
         <p asp-for="Email" class="Add_lable">Email</p>
         <input asp-for="Email" class="form-control" required  />
         <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="Salary" class="Add_lable">Lương</p>
+        <input asp-for="Salary" class="form-control" required />
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="StartTime" class="Add_lable">Ngày Bắt Đầu</p>
+        <input asp-for="StartTime" class="form-control" required />
+        <span asp-validation-for="StartTime" class="text-danger"></span>
     </div>
     <div class="form-group">
         <p asp-for="DepartmentId" class="Add_lable">Mã Phòng Ban</p>

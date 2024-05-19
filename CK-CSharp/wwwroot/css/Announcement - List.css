@@ -1,0 +1,145 @@
+﻿h1.Announcement_list_title {
+    margin-top: 20px;
+    color: white;
+    text-shadow: #ffffff 1px 0 4px;
+}
+
+a.Announcement_list_btnCreate {
+    background-color: #6B6ECC;
+    background: linear-gradient(45deg, #04051dea 0%, #2b566e 100%);
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+    align-items: center;
+}
+
+a.Announcement_list_btnCreate:hover {
+    transform: scale(1.05);
+    border: 1px solid white;
+    box-shadow:
+    -webkit-box-shadow:0px 0px 20px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 20px 0px rgba(255,255,255,0.41);
+}
+
+.Announcement_list_container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 24px auto;
+}
+
+.Announcement_list_item {
+    background-color: #6B6ECC;
+    background: linear-gradient(45deg, #04051dea 0%, #2b566e 100%);
+    border-radius: 12px;
+    border: 1px solid black;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    padding: 15px;
+    margin: 10px;
+    width: 90%;
+    height: 260px;
+    text-align: center;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+    color: black;
+    display: flex;
+    flex-direction: row;
+}
+
+.Announcement_list_item:hover {
+    transform: scale(1.05);
+    border: 1px solid white;
+    box-shadow:
+    -webkit-box-shadow:0px 0px 25px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 25px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 25px 0px rgba(255,255,255,0.41);
+}
+
+.Announcement_list_item:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+}
+
+img.Announcement_list_img {
+    border-radius: 5px;
+    margin-bottom: 12px;
+    margin-top: 10px;
+    margin-left: 12px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.Announcement_list_itemDetail {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 24px;
+    justify-content: flex-start;
+    align-items: start;
+}
+
+.Announcement_list_itemDetail h3 {
+     font-size: 1.5rem;
+     font-weight: 700;
+     margin-bottom: 10px;
+     margin-top: 12px;
+     color: white;
+}
+
+.Announcement_list_itemDetail p {
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 6px;
+}
+
+.Announcement_list_groupBtn {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    gap: 24px;
+
+}
+
+a.Announcement_list_btnDetail {
+    background-color: rgb(33 150 243);
+    border-radius: 5px;
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+    align-items: center;
+}
+
+a.Announcement_list_btnDetail:hover {
+    transform: scale(1.05);
+    box-shadow:
+    -webkit-box-shadow:0px 0px 20px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 20px 0px rgba(255,255,255,0.41);
+}
+
+button.Announcement_list_btnDelete {
+    background-color: #EF665B;
+    border-radius: 5px;
+    color: white;
+    padding: 6px 12px;
+    transition: all 0.5s ease-in-out;
+    align-items: center;
+    border: none;
+}
+
+button.Announcement_list_btnDelete:hover {
+    transform: scale(1.05);
+    box-shadow:
+    -webkit-box-shadow:0px 0px 20px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 20px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 20px 0px rgba(255,255,255,0.41);
+}

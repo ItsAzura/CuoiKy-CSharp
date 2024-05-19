@@ -33,6 +33,18 @@ namespace CK_CSharp.Controllers
                 return View(employee); 
             }
 
+            if(!DateValidator(employee.Dob))
+            {
+                ModelState.AddModelError("Dob", "Ngày tháng không hợp lệ.");
+                return View(employee);
+            }
+
+            if(!DateValidator(employee.StartTime))
+            {
+                ModelState.AddModelError("StartTime", "Ngày tháng không hợp lệ.");
+                return View(employee);
+            }
+
             // Truy vấn Department từ DepartmentId
             var department = await dbContext.Departments.FindAsync(employee.DepartmentId);
             if (department == null)
@@ -63,8 +75,11 @@ namespace CK_CSharp.Controllers
             {
                 Name = employee.Name,
                 Address = employee.Address,
+                Dob = employee.Dob,
                 PhoneNumber = employee.PhoneNumber,
+                Salary = employee.Salary,
                 Email = employee.Email,
+                StartTime = employee.StartTime,
                 DepartmentId = employee.DepartmentId,
                 DepartmentName = employee.DepartmentName,
                 ImagePath = employee.ImagePath,
@@ -131,6 +146,20 @@ namespace CK_CSharp.Controllers
                 }
                 employeeToUpdate.PhoneNumber = employee.PhoneNumber;
 
+                if (!DateValidator(employee.Dob))
+                {
+                    ModelState.AddModelError("Dob", "Ngày tháng không hợp lệ.");
+                    return View(employee);
+                }
+                employeeToUpdate.Dob = employee.Dob;
+
+                if (!DateValidator(employee.StartTime))
+                {
+                    ModelState.AddModelError("StartTime", "Ngày tháng không hợp lệ.");
+                    return View(employee);
+                }
+                employeeToUpdate.StartTime = employee.StartTime;
+
                 if (Image == null || Image.Length == 0)
                 {
                     ModelState.AddModelError("Image", "Ảnh là cần thiết.");
@@ -151,6 +180,7 @@ namespace CK_CSharp.Controllers
                 employeeToUpdate.Name = employee.Name;
                 employeeToUpdate.Address = employee.Address;
                 employeeToUpdate.Email = employee.Email;
+                employeeToUpdate.Salary = employee.Salary;
                 employeeToUpdate.DepartmentId = employee.DepartmentId;
 
                 await dbContext.SaveChangesAsync();
@@ -197,6 +227,12 @@ namespace CK_CSharp.Controllers
             // Biểu thức chính quy để kiểm tra số điện thoại
             string pattern = @"^(090|098|091|031|035|038)\d{7}$";
             return Regex.IsMatch(phoneNumber, pattern);
+        }
+
+        private bool DateValidator(string date)
+        {
+            string Datepattern = @"^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$"; ;
+            return Regex.IsMatch(date, Datepattern);
         }
     }
 }

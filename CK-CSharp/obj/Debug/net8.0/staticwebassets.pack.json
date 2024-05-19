@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\Add.css"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Announcement - List.css",
+      "PackagePath": "staticwebassets\\css\\Announcement - List.css"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Company - List.css",
       "PackagePath": "staticwebassets\\css\\Company - List.css"
     },
@@ -23,6 +27,14 @@
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Edit.css",
       "PackagePath": "staticwebassets\\css\\Edit.css"
+    },
+    {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Employee - List.css",
+      "PackagePath": "staticwebassets\\css\\Employee - List.css"
+    },
+    {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Schedule - List.css",
+      "PackagePath": "staticwebassets\\css\\Schedule - List.css"
     },
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\about.css",
@@ -65,6 +77,10 @@
       "PackagePath": "staticwebassets\\image\\Screenshot 2023-09-17 141103.png"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Screenshot 2023-10-04 215352.png",
+      "PackagePath": "staticwebassets\\image\\Screenshot 2023-10-04 215352.png"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\animepic2.jpg",
       "PackagePath": "staticwebassets\\image\\animepic2.jpg"
     },
@@ -75,6 +91,10 @@
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\batman.png",
       "PackagePath": "staticwebassets\\image\\batman.png"
+    },
+    {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\deadpool.png",
+      "PackagePath": "staticwebassets\\image\\deadpool.png"
     },
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\ironman.png",

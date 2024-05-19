@@ -12,6 +12,10 @@ namespace CK_CSharp.Models
         [Display(Name = "Tên Nhân Viên")]
         public string Name { get; set; }
 
+        [Display(Name = "Ngày Sinh")]
+        [RegularExpression(@"^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$", ErrorMessage = "Định dạng ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.")]
+        public string Dob { get; set; }
+
         [Display(Name = "Địa Chỉ")]
         public string Address { get; set; }
 
@@ -22,6 +26,12 @@ namespace CK_CSharp.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [Display(Name = "Lương")]
+        public long? Salary { get; set; }
+
+        [Display(Name = "Thời gian Bắt Đầu")]
+        [RegularExpression(@"^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$", ErrorMessage = "Định dạng ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.")]
+        public string StartTime { get; set; }
 
         [ForeignKey("Department")]
         [Display(Name = "Id Phòng Ban")]

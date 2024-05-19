@@ -25,12 +25,12 @@
 {
     <form asp-action="Edit" method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <p asp-for="AnnouncementId" class="Add_lable">Tên Lịch Trình</p>
+            <p asp-for="AnnouncementId" class="Add_lable">ID Thông Báo</p>
             <input asp-for="AnnouncementId" class="form-control" readonly />
             <span asp-validation-for="AnnouncementId" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <p asp-for="Name" class="Add_lable">Tên Lịch Trình</p>
+            <p asp-for="Name" class="Add_lable">Tên Thông Báo</p>
             <input asp-for="Title" class="form-control" required />
             <span asp-validation-for="Title" class="text-danger"></span>
         </div>
@@ -50,7 +50,7 @@
             <span asp-validation-for="CategoryId" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <p asp-for="CategoryName" class="Add_lable">Tên Lịch Trình</p>
+            <p asp-for="CategoryName" class="Add_lable">Tên Thể Loại</p>
             <input asp-for="CategoryName" class="form-control" readonly/>
             <span asp-validation-for="CategoryName" class="text-danger"></span>
         </div>
@@ -60,7 +60,7 @@
             <span asp-validation-for="EmployeeId" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <p asp-for="EmployeeName" class="Add_lable">Tên Lịch Trình</p>
+            <p asp-for="EmployeeName" class="Add_lable">Tên Nhân Viên</p>
             <input asp-for="EmployeeName" class="form-control" readonly />
             <span asp-validation-for="EmployeeName" class="text-danger"></span>
         </div>
