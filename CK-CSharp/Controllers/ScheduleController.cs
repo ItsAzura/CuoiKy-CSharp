@@ -105,10 +105,19 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(string searchString)
         {
-            var schedules = await dbContext.schedules.ToListAsync();
-            return View(schedules);
+            ViewData["ScheduleCurrentFilter"] = searchString;
+
+            var schedules = from s in dbContext.schedules
+                            select s;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                schedules = schedules.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(await schedules.ToListAsync());
         }
 
         [HttpGet]
