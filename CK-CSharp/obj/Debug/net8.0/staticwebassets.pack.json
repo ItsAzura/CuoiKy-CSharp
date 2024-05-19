@@ -109,6 +109,10 @@
       "PackagePath": "staticwebassets\\image\\me.jpg"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Đăng ký.png",
+      "PackagePath": "staticwebassets\\image\\Đăng ký.png"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

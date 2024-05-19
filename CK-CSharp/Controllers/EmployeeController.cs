@@ -102,9 +102,11 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List(string searchString)
+        public async Task<IActionResult> List(string searchString, long? minSalary, long? maxSalary)
         {
             ViewData["EmployeeCurrentFilter"] = searchString;
+            ViewData["MinSalary"] = minSalary;
+            ViewData["MaxSalary"] = maxSalary;
 
             var employees = from e in dbContext.Employees
                             select e;
@@ -112,6 +114,16 @@ namespace CK_CSharp.Controllers
             if (!string.IsNullOrEmpty(searchString))
             {
                 employees = employees.Where(e => e.Name.Contains(searchString));
+            }
+
+            if (minSalary.HasValue)
+            {
+                employees = employees.Where(e => e.Salary >= minSalary.Value);
+            }
+
+            if (maxSalary.HasValue)
+            {
+                employees = employees.Where(e => e.Salary <= maxSalary.Value);
             }
 
             var employeeList = await employees.ToListAsync();

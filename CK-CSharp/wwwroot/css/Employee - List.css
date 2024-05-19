@@ -12,27 +12,49 @@ div.Employee_list_feature {
     align-items: center;
 }
 
-div.Employee_list_feature form {
+.Employee_list_searchfilter {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+form.Employee_list_search {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     gap: 12px;
 }
 
 input.Employee_list_searchbar {
-    width: 100%;
-    padding: 10px 20px;
+    width: 50%;
+    padding: 8px 16px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 2px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+input.Employee_list_searchbar:hover {
+    transform: scale(1.05);
+    box-shadow:
+    -webkit-box-shadow:0px 0px 10px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
+}
+
+input.Employee_list_searchbar:focus {
+    border: 1px solid #1e252e;
+    box-shadow:
+    -webkit-box-shadow:0px 0px 10px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
 }
 
 button.Employee_list_searchbarBtn {
     background-color: #1F2739;
     color: white;
-    padding: 12px 20px;
+    padding: 10px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
@@ -42,6 +64,45 @@ button.Employee_list_searchbarBtn {
 
 button.Employee_list_searchbarBtn:hover {
     transform: scale(1.05);
+    box-shadow:
+    -webkit-box-shadow:0px 0px 10px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
+}
+
+form.Employee_list_filter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+p.Employee_list_filterLaber {
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    margin:0;
+}
+
+input.Employee_list_filterInput {
+    width: 12%;
+    margin: 4px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+input.Employee_list_filterInput:hover {
+    transform: scale(1.05);
+    box-shadow:
+    -webkit-box-shadow:0px 0px 10px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
+}
+
+input.Employee_list_filterInput:focus {
+    border: 1px solid #1e252e;
     box-shadow:
     -webkit-box-shadow:0px 0px 10px 0px rgba(255,255,255,0.41);
     -moz-box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
@@ -74,7 +135,7 @@ a.Employee_list_btnCreate:hover {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content:flex-start;
     margin: 20px auto;
 }
 
