@@ -10,10 +10,13 @@ namespace CK_CSharp.Controllers
     {
         private readonly EmployeeDbContext dbContext;
         private readonly IWebHostEnvironment _hostingEnvironment;
-        public ScheduleController(EmployeeDbContext dbContext, IWebHostEnvironment hostingEnvironment) 
+        private readonly ILogger<ScheduleController> _logger;
+
+        public ScheduleController(EmployeeDbContext dbContext, IWebHostEnvironment hostingEnvironment, ILogger<ScheduleController> logger) 
         {
             this.dbContext = dbContext;
             this._hostingEnvironment = hostingEnvironment;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -105,9 +108,11 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List(string searchString)
+        public async Task<IActionResult> List(string searchString,string startDate, string endDate)
         {
             ViewData["ScheduleCurrentFilter"] = searchString;
+            ViewData["StartDateFilter"] = startDate;
+            ViewData["EndDateFilter"] = endDate;
 
             var schedules = from s in dbContext.schedules
                             select s;
@@ -117,7 +122,34 @@ namespace CK_CSharp.Controllers
                 schedules = schedules.Where(s => s.Name.Contains(searchString));
             }
 
-            return View(await schedules.ToListAsync());
+            var schedulesList = await schedules.AsNoTracking().ToListAsync();
+
+            if (!string.IsNullOrEmpty(startDate))
+            {
+                if (DateTime.TryParseExact(startDate, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime parsedStartDate))
+                {
+                    schedulesList = schedulesList.Where(s => DateTime.ParseExact(s.StartDate, "dd/MM/yyyy", null) >= parsedStartDate).ToList();
+                    _logger.LogInformation("Filtered by start date ({StartDate}), remaining count: {Count}", startDate, schedulesList.Count);
+                }
+                else
+                {
+                    ModelState.AddModelError("startDate", "Định dạng ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.");
+                }
+            }
+            if (!string.IsNullOrEmpty(endDate))
+            {
+                if (DateTime.TryParseExact(endDate, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime parsedEndDate))
+                {
+                    schedulesList = schedulesList.Where(s => DateTime.ParseExact(s.EndDate, "dd/MM/yyyy", null) <= parsedEndDate).ToList();
+                    _logger.LogInformation("Filtered by end date ({EndDate}), remaining count: {Count}", endDate, schedulesList.Count);
+                }
+                else
+                {
+                    ModelState.AddModelError("endDate", "Định dạng ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.");
+                }
+            }
+
+            return View(schedulesList);
         }
 
         [HttpGet]

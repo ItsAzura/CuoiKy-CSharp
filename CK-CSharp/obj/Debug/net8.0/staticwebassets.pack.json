@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\370098924_344608994687168_2495910573352098424_n.png",
+      "PackagePath": "staticwebassets\\image\\370098924_344608994687168_2495910573352098424_n.png"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\At the office.gif",
       "PackagePath": "staticwebassets\\image\\At the office.gif"
     },
