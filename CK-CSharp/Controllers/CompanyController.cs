@@ -48,6 +48,7 @@ namespace CK_CSharp.Controllers
         [HttpGet]
         public async Task<IActionResult> List(string searchString)
         {
+            ViewData["CompanyCurrentFilter"] = searchString;
             var companies = from c in dbContext.Companies
                             select c;
 
