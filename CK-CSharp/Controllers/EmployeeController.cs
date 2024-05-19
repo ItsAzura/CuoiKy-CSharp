@@ -102,20 +102,39 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List(string searchString)
+        public async Task<IActionResult> List(string searchString, long? minSalary, long? maxSalary)
         {
+            //Lấy giá trị từ view để giữ giá trị filter khi chuyển trang
             ViewData["EmployeeCurrentFilter"] = searchString;
+            ViewData["MinSalary"] = minSalary;
+            ViewData["MaxSalary"] = maxSalary;
 
+            //Tạo truy vấn LINQ để lấy tất cả thông tin từ bảng employees.
             var employees = from e in dbContext.Employees
                             select e;
 
+            //Kiểm tra xem searchString có giá trị không
             if (!string.IsNullOrEmpty(searchString))
             {
                 employees = employees.Where(e => e.Name.Contains(searchString));
             }
 
-            var employeeList = await employees.ToListAsync();
+            //Kiểm tra xem minSalary có giá trị không
+            if (minSalary.HasValue)
+            {
+                employees = employees.Where(e => e.Salary >= minSalary.Value);
+            }
 
+            //Kiểm tra xem maxSalary có giá trị không
+            if (maxSalary.HasValue)
+            {
+                employees = employees.Where(e => e.Salary <= maxSalary.Value);
+            }
+
+            //Thực thi truy vấn LINQ
+            var employeeList = await employees.ToListAsync(); 
+
+            //Tạo một danh sách mới để chứa thông tin nhân viên
             var employeeViewModels = employeeList.Select(employee => new Employee
             {
                 EmployeeId = employee.EmployeeId,
@@ -131,6 +150,7 @@ namespace CK_CSharp.Controllers
                 CreatedAt = employee.CreatedAt
             }).ToList();
 
+            //Trả về view với danh sách nhân viên
             return View(employeeViewModels);
         }
 

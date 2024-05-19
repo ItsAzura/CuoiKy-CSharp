@@ -57,6 +57,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\370098924_344608994687168_2495910573352098424_n.png",
+      "PackagePath": "staticwebassets\\image\\370098924_344608994687168_2495910573352098424_n.png"
+    },
+    {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\370212399_685731706561697_8262309277258460353_n.png",
+      "PackagePath": "staticwebassets\\image\\370212399_685731706561697_8262309277258460353_n.png"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\At the office.gif",
       "PackagePath": "staticwebassets\\image\\At the office.gif"
     },
@@ -79,6 +87,10 @@
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Screenshot 2023-09-17 141103.png",
       "PackagePath": "staticwebassets\\image\\Screenshot 2023-09-17 141103.png"
+    },
+    {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Screenshot 2023-10-02 210623.png",
+      "PackagePath": "staticwebassets\\image\\Screenshot 2023-10-02 210623.png"
     },
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Screenshot 2023-10-04 215352.png",
@@ -107,6 +119,10 @@
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\me.jpg",
       "PackagePath": "staticwebassets\\image\\me.jpg"
+    },
+    {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Đăng ký.png",
+      "PackagePath": "staticwebassets\\image\\Đăng ký.png"
     },
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\js\\site.js",

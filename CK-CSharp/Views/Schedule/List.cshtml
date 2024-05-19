@@ -17,10 +17,19 @@
 <h1 class="Schedule_list_title">Schedule List</h1>
 
 <div class="Schedule_list_feature">
-    <form method="get" asp-controller="Schedule" asp-action="List">
-        <input type="text" name="searchString" value="@ViewData["ScheduleCurrentFilter"]" placeholder="Search by name..." class="Schedule_list_searchbar" />
-        <button type="submit" class="Schedule_list_searchbarBtn">Search</button>
-    </form>
+    <div class="Schedule_list_searchfilter">
+        <form method="get" asp-controller="Schedule" asp-action="List" class="Schedule_list_search">
+            <input type="text" name="searchString" value="@ViewData["ScheduleCurrentFilter"]" placeholder="Search by name..." class="Schedule_list_searchbar" />
+            <button type="submit" class="Schedule_list_searchbarBtn">Search</button>
+        </form>
+         <form method="get" asp-controller="Schedule" asp-action="List" class="Schedule_list_filter">
+            <p class="Schedule_list_filterLaber" for="minSalary">Start Day:</p>
+            <input class="Schedule_list_filterInput" type="text" name="startDate" value="@ViewData["StartDateFilter"]" placeholder="dd/MM/yyyy" />
+            <p class="Schedule_list_filterLaber" for="maxSalary">End Day:</p>
+            <input class="Schedule_list_filterInput" type="text" name="endDate" value="@ViewData["EndDateFilter"]" placeholder="dd/MM/yyyy" />
+            <button type="submit" class="Schedule_list_searchbarBtn">Lọc</button>
+        </form>
+    </div>
     <a asp-action="Add" asp-controller="Schedule" class="Schedule_list_btnCreate">Thêm mới</a>
 </div>
 

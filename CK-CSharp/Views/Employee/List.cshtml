@@ -17,11 +17,21 @@
 <h1 class="Employee_list_title">Employee List</h1>
 
 <div class="Employee_list_feature">
-     <form method="get" asp-controller="Employee" asp-action="List">
-        <input type="text" name="searchString" value="@ViewData["EmployeeCurrentFilter"]" placeholder="Search by name..." class="Employee_list_searchbar" />
-        <button type="submit" class="Employee_list_searchbarBtn">Search</button>
-    </form>
+    <div class="Employee_list_searchfilter">
+        <form method="get" asp-controller="Employee" asp-action="List" class="Employee_list_search">
+            <input type="text" name="searchString" value="@ViewData["EmployeeCurrentFilter"]" placeholder="Search by name..." class="Employee_list_searchbar" />
+            <button type="submit" class="Employee_list_searchbarBtn">Tìm Kiếm</button>
+        </form>
 
+        <form method="get" asp-controller="Employee" asp-action="List" class="Employee_list_filter">
+            <p class="Employee_list_filterLaber" for="minSalary">Min Salary:</p>
+            <input class="Employee_list_filterInput" type="number" name="minSalary" value="@ViewData["MinSalary"]" />
+            <p class="Employee_list_filterLaber" for="maxSalary">Max Salary:</p>
+            <input class="Employee_list_filterInput" type="number" name="maxSalary" value="@ViewData["MaxSalary"]" />
+            <button type="submit" class="Employee_list_searchbarBtn">Lọc</button>
+        </form>
+    </div>
+   
     <a asp-action="Add" asp-controller="Employee" class="Employee_list_btnCreate">Thêm mới</a>
 </div>
 

@@ -10,10 +10,13 @@ namespace CK_CSharp.Controllers
     {
         private readonly EmployeeDbContext dbContext;
         private readonly IWebHostEnvironment _hostingEnvironment;
-        public ScheduleController(EmployeeDbContext dbContext, IWebHostEnvironment hostingEnvironment) 
+        private readonly ILogger<ScheduleController> _logger;
+
+        public ScheduleController(EmployeeDbContext dbContext, IWebHostEnvironment hostingEnvironment, ILogger<ScheduleController> logger) 
         {
             this.dbContext = dbContext;
             this._hostingEnvironment = hostingEnvironment;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -105,19 +108,62 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List(string searchString)
+        public async Task<IActionResult> List(string searchString,string startDate, string endDate)
         {
+            //Lấy giá trị từ view để giữ giá trị filter khi chuyển trang
             ViewData["ScheduleCurrentFilter"] = searchString;
+            ViewData["StartDateFilter"] = startDate;
+            ViewData["EndDateFilter"] = endDate;
 
+            //Tạo truy vấn LINQ để lấy tất cả thông tin từ bảng schedules.
             var schedules = from s in dbContext.schedules
                             select s;
 
+            //Kiểm tra xem searchString có giá trị không
             if (!string.IsNullOrEmpty(searchString))
             {
                 schedules = schedules.Where(s => s.Name.Contains(searchString));
             }
 
-            return View(await schedules.ToListAsync());
+            //Thực hiện truy vấn và lấy kết quả dưới dạng danh sách, sử dụng AsNoTracking() để tăng hiệu suất.
+            var schedulesList = await schedules.AsNoTracking().ToListAsync();
+
+            //Kiểm tra xem startDate có giá trị không.
+            if (!string.IsNullOrEmpty(startDate))
+            {
+                //Kiểm tra xem startDate có đúng định dạng không.
+                if (DateTime.TryParseExact(startDate, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime parsedStartDate))
+                {
+                    //Lọc danh sách theo ngày bắt đầu.
+                    schedulesList = schedulesList.Where(s => DateTime.ParseExact(s.StartDate, "dd/MM/yyyy", null) >= parsedStartDate).ToList();
+                    //Ghi log
+                    _logger.LogInformation("Filtered by start date ({StartDate}), remaining count: {Count}", startDate, schedulesList.Count);
+                }
+                else
+                {
+                    ModelState.AddModelError("startDate", "Định dạng ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.");
+                }
+            }
+
+            //Kiểm tra xem endDate có giá trị không.
+            if (!string.IsNullOrEmpty(endDate))
+            {
+                //Kiểm tra xem endDate có đúng định dạng không.
+                if (DateTime.TryParseExact(endDate, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime parsedEndDate))
+                {
+                    //Lọc danh sách thông báo theo endDate.
+                    schedulesList = schedulesList.Where(s => DateTime.ParseExact(s.EndDate, "dd/MM/yyyy", null) <= parsedEndDate).ToList();
+                    //Ghi log thông báo đã lọc theo endDate.
+                    _logger.LogInformation("Filtered by end date ({EndDate}), remaining count: {Count}", endDate, schedulesList.Count);
+                }
+                else
+                {
+                    ModelState.AddModelError("endDate", "Định dạng ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.");
+                }
+            }
+
+            //Trả về view với danh sách lịch trình đã được lọc.
+            return View(schedulesList);
         }
 
         [HttpGet]
