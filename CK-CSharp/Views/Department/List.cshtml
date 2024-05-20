@@ -19,10 +19,23 @@
 <div class="Company_list_feature">
     <form method="get" asp-controller="Department" asp-action="List">
         <input type="text" name="searchString" value="@ViewData["DepartmentCurrentFilter"]" placeholder="Search by name..." class="Company_list_searchbar" />
-        <button type="submit" class="Company_list_searchbarBtn">Search</button>
+        <button type="submit" class="Company_list_searchbarBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m21 21l-4.343-4.343m0 0A8 8 0 1 0 5.343 5.343a8 8 0 0 0 11.314 11.314" /></svg>
+        </button>
     </form>
 
-    <a class="btn btn-primary addBtn" asp-action="Add" asp-controller="Department">Thêm</a>
+    <div class="Company_list_feature_right">
+        <div class="Company_list_sort">
+            <a href="@Url.Action("List", new { sortOrder = "name_asc", searchString = ViewData["DepartmentCurrentFilter"] })">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 14h4.421c.93 0 1.395 0 1.52.28c.123.28-.193.616-.826 1.288l-3.638 3.864c-.633.672-.95 1.008-.826 1.288s.59.28 1.52.28H10M4 9l2.106-4.695C6.496 3.435 6.69 3 7 3s.504.435.894 1.305L10 9m7.5 11V4m0 16c-.7 0-2.008-1.994-2.5-2.5m2.5 2.5c.7 0 2.009-1.994 2.5-2.5" color="currentColor" /></svg>
+            </a>
+            <a href="@Url.Action("List", new { sortOrder = "name_desc", searchString = ViewData["DepartmentCurrentFilter"] })">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 3h4.421c.93 0 1.395 0 1.52.28c.123.28-.193.616-.826 1.288L5.477 8.432c-.633.672-.95 1.008-.826 1.288s.59.28 1.52.28H10M4 21l2.106-4.695C6.496 15.435 6.69 15 7 15s.504.435.894 1.305L10 21m7.5-1V4m0 16c-.7 0-2.008-1.994-2.5-2.5m2.5 2.5c.7 0 2.009-1.994 2.5-2.5" color="currentColor" /></svg>
+            </a>
+        </div>
+        <a class="btn btn-primary addBtn" asp-action="Add" asp-controller="Department">Thêm</a>
+    </div>
+
 </div>
 
 

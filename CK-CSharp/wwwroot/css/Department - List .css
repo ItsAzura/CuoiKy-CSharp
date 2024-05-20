@@ -48,6 +48,44 @@ button.Company_list_searchbarBtn:hover {
     box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
 }
 
+div.Company_list_feature_right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+div.Company_list_sort {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+    div.Company_list_sort a {
+        background-color: #1F2739;
+        color: white;
+        padding: 12px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        transition: all 0.3s ease-in-out;
+    }
+
+        div.Company_list_sort a:hover {
+            transform: scale(1.1);
+            color: white;
+            background-color: dodgerblue;
+            border-radius: 5px;
+        }
+
 table.container {
     margin-top: 24px;
 }

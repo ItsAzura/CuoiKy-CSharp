@@ -3,6 +3,7 @@ using CK_CSharp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 namespace CK_CSharp.Controllers
 {
@@ -108,12 +109,13 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List(string searchString,string startDate, string endDate)
+        public async Task<IActionResult> List(string searchString,string startDate, string endDate, string sortOrder)
         {
             //Lấy giá trị từ view để giữ giá trị filter khi chuyển trang
             ViewData["ScheduleCurrentFilter"] = searchString;
             ViewData["StartDateFilter"] = startDate;
             ViewData["EndDateFilter"] = endDate;
+            ViewData["CurrentSort"] = sortOrder;
 
             //Tạo truy vấn LINQ để lấy tất cả thông tin từ bảng schedules.
             var schedules = from s in dbContext.schedules
@@ -161,6 +163,13 @@ namespace CK_CSharp.Controllers
                     ModelState.AddModelError("endDate", "Định dạng ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.");
                 }
             }
+
+            //Sắp xếp theo tên
+            schedulesList = sortOrder switch
+            {
+                "name_desc" => schedulesList.OrderByDescending(s => s.Name).ToList(),
+                _ => schedulesList.OrderBy(s => s.Name).ToList(),
+            };
 
             //Trả về view với danh sách lịch trình đã được lọc.
             return View(schedulesList);

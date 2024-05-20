@@ -46,9 +46,11 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List(string searchString)
+        public async Task<IActionResult> List(string searchString, string sortOrder)
         {
             ViewData["CompanyCurrentFilter"] = searchString;
+            ViewData["CurrentSort"] = sortOrder;
+
             var companies = from c in dbContext.Companies
                             select c;
 
@@ -56,6 +58,13 @@ namespace CK_CSharp.Controllers
             {
                 companies = companies.Where(s => s.Name.Contains(searchString));
             }
+
+            // Sắp xếp theo tên
+            companies = sortOrder switch
+            {
+                "name_desc" => companies.OrderByDescending(c => c.Name),
+                _ => companies.OrderBy(c => c.Name),
+            };
 
             return View(await companies.ToListAsync());
         }

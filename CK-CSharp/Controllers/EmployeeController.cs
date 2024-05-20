@@ -102,12 +102,13 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List(string searchString, long? minSalary, long? maxSalary)
+        public async Task<IActionResult> List(string searchString, long? minSalary, long? maxSalary, string sortOrder)
         {
             //Lấy giá trị từ view để giữ giá trị filter khi chuyển trang
             ViewData["EmployeeCurrentFilter"] = searchString;
             ViewData["MinSalary"] = minSalary;
             ViewData["MaxSalary"] = maxSalary;
+            ViewData["CurrentSort"] = sortOrder;
 
             //Tạo truy vấn LINQ để lấy tất cả thông tin từ bảng employees.
             var employees = from e in dbContext.Employees
@@ -130,6 +131,13 @@ namespace CK_CSharp.Controllers
             {
                 employees = employees.Where(e => e.Salary <= maxSalary.Value);
             }
+
+            //Sắp xếp theo tên
+            employees = sortOrder switch
+            {
+                "name_desc" => employees.OrderByDescending(e => e.Name),
+                _ => employees.OrderBy(e => e.Name),
+            };
 
             //Thực thi truy vấn LINQ
             var employeeList = await employees.ToListAsync(); 
