@@ -19,7 +19,9 @@
 <div class="Company_list_feature">
     <form method="get" asp-controller="Department" asp-action="List">
         <input type="text" name="searchString" value="@ViewData["DepartmentCurrentFilter"]" placeholder="Search by name..." class="Company_list_searchbar" />
-        <button type="submit" class="Company_list_searchbarBtn">Search</button>
+        <button type="submit" class="Company_list_searchbarBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m21 21l-4.343-4.343m0 0A8 8 0 1 0 5.343 5.343a8 8 0 0 0 11.314 11.314" /></svg>
+        </button>
     </form>
 
     <div class="Company_list_feature_right">
@@ -34,7 +36,6 @@
         <a class="btn btn-primary addBtn" asp-action="Add" asp-controller="Department">Thêm</a>
     </div>
 
-    
 </div>
 
 

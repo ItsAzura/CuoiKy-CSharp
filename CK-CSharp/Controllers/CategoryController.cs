@@ -1,6 +1,7 @@
 ﻿using CK_CSharp.Data;
 using CK_CSharp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace CK_CSharp.Controllers
@@ -37,9 +38,10 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List(string searchString)
+        public async Task<IActionResult> List(string searchString, string sortOrder)
         {
             ViewData["CategoryCurrentFilter"] = searchString;
+            ViewData["CurrentSort"] = sortOrder;
 
             var categories = from c in dbContext.Categories
                              select c;
@@ -48,6 +50,13 @@ namespace CK_CSharp.Controllers
             {
                 categories = categories.Where(s => s.Name.Contains(searchString));
             }
+
+             // Sắp xếp theo tên
+            categories = sortOrder switch
+            {
+                "name_desc" => categories.OrderByDescending(c => c.Name),
+                _ => categories.OrderBy(c => c.Name),
+            };
 
             return View(await categories.ToListAsync());
         }
