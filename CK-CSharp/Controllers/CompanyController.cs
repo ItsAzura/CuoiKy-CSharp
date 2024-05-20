@@ -59,6 +59,7 @@ namespace CK_CSharp.Controllers
                 companies = companies.Where(s => s.Name.Contains(searchString));
             }
 
+            // Sắp xếp theo tên
             companies = sortOrder switch
             {
                 "name_desc" => companies.OrderByDescending(c => c.Name),
