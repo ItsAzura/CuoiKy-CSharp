@@ -1,9 +1,10 @@
 ﻿using CK_CSharp.configurations.model;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CK_CSharp.Data
 {
-    public class EmployeeDbContext : DbContext
+    public class EmployeeDbContext : IdentityDbContext
     {
         public EmployeeDbContext(DbContextOptions<EmployeeDbContext> options) : base(options)
         {
