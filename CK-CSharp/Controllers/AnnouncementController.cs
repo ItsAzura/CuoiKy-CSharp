@@ -1,6 +1,7 @@
 ﻿using CK_CSharp.Data;
 using CK_CSharp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using System.Text.RegularExpressions;
@@ -109,12 +110,13 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> List(string searchString, string startDate, string endDate)
+        public async Task<IActionResult> List(string searchString, string startDate, string endDate, string sortOrder)
         {
             //Lấy giá trị từ view để giữ giá trị filter khi chuyển trang
             ViewData["AnnouncementCurrentFilter"] = searchString;
             ViewData["StartDate"] = startDate;
             ViewData["EndDate"] = endDate;
+            ViewData["CurrentSort"] = sortOrder;
 
             //Tạo truy vấn LINQ để lấy tất cả thông tin từ bảng announcements.
             var announcements = from a in dbContext.announcements select a; 
@@ -161,6 +163,13 @@ namespace CK_CSharp.Controllers
                     ModelState.AddModelError("endDate", "Định dạng ngày không hợp lệ. Vui lòng nhập lại theo định dạng dd/MM/yyyy.");
                 }
             }
+
+            //Sắp xếp theo tên
+            announcementsList = sortOrder switch
+            {
+                "name_desc" => announcementsList.OrderByDescending(s => s.Title).ToList(),
+                _ => announcementsList.OrderBy(s => s.Title).ToList(),
+            };
 
             //Trả về view với danh sách thông báo đã được lọc.
             return View(announcementsList);
