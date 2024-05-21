@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.RegularExpressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CK_CSharp.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ScheduleController : Controller
     {
         private readonly EmployeeDbContext dbContext;

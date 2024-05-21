@@ -1,11 +1,13 @@
 ﻿using CK_CSharp.Data;
 using CK_CSharp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 
 namespace CK_CSharp.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CompanyController : Controller
     {
         private readonly EmployeeDbContext dbContext;

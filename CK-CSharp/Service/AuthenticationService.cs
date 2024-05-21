@@ -1,11 +1,11 @@
 ﻿using CK_CSharp.Data;
 using CK_CSharp.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Globalization;
 
 namespace CK_CSharp.Service
 {
@@ -102,9 +102,9 @@ namespace CK_CSharp.Service
         {
             var claims = await AuthenticationHelper.GetClaims(user, _userManager); // Lấy danh sách claims của người dùng 
 
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.Key)); // Tạo một security key từ key trong config 
+            var vSymmetricSecurityKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtConfig.Key)); // Tạo một security key từ key trong config 
 
-            var signingCred = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha512Signature); // Tạo signing credentials từ security key
+            var signingCred = new Microsoft.IdentityModel.Tokens.SigningCredentials(vSymmetricSecurityKey, SecurityAlgorithms.HmacSha512Signature); // Tạo signing credentials từ security key
              
             // Tạo một SecurityTokenDescriptor
             var securityTokenDescriptor = new SecurityTokenDescriptor() //
@@ -112,7 +112,7 @@ namespace CK_CSharp.Service
                 Subject = new ClaimsIdentity(claims),
                 Issuer = jwtConfig.Issuer,
                 Audience = jwtConfig.Audience,
-                Expires = DateTime.Now.AddYears(jwtConfig.ExpireYears),
+                Expires = DateTime.Now.AddDays(jwtConfig.ExpireYears),
                 SigningCredentials = signingCred
             };
 
@@ -130,7 +130,7 @@ namespace CK_CSharp.Service
             // Ghi token vào cookie "AccessToken" của phản hồi HTTP
             _httpContext.HttpContext?.Response.Cookies.Append("AccessToken", accessToken, new CookieOptions 
             {
-                Expires = DateTime.Now.AddYears(1), 
+                Expires = DateTime.Now.AddDays(60), 
                 HttpOnly = true,
                 Secure = true,
                 SameSite = SameSiteMode.Strict,

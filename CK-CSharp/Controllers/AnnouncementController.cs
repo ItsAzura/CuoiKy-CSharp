@@ -1,5 +1,6 @@
 ﻿using CK_CSharp.Data;
 using CK_CSharp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -9,11 +10,14 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace CK_CSharp.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AnnouncementController : Controller
     {
         private readonly EmployeeDbContext dbContext;
         private readonly IWebHostEnvironment _hostingEnvironment;
         private readonly ILogger<ScheduleController> _logger;
+
+
         public AnnouncementController(EmployeeDbContext dbContext, IWebHostEnvironment hostingEnvironment, ILogger<ScheduleController> logger)
         {
             this.dbContext = dbContext;

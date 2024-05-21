@@ -3,6 +3,7 @@ using CK_CSharp.Data;
 using CK_CSharp.Models;
 using CK_CSharp.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -21,11 +22,45 @@ builder.Services.AddSingleton(jwtConfig);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); 
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddMvc();
+
+builder.Services.AddScoped<IAuthenticationService, AuthenticationService>(); // ??ng ký d?ch v? xác th?c
 
 builder.Services.AddDbContext<EmployeeDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; // Xác th?c m?c ??nh 
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; // Thách th?c m?c ??nh
+})
+ .AddJwtBearer(options => // Thêm xác th?c JWT
+ {
+     options.TokenValidationParameters = new TokenValidationParameters() // C?u hình các tham s? ki?m tra token
+     {
+         ValidateActor = true,
+         ValidateIssuer = true,
+         ValidateAudience = true,
+         RequireExpirationTime = true,
+         ValidateLifetime = true,
+         ValidateIssuerSigningKey = true,
+         ValidIssuer = jwtConfig.Issuer,
+         ValidAudience = jwtConfig.Audience,
+         ClockSkew = TimeSpan.Zero,
+         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtConfig.Key)),
+     };
+
+     options.Events = new JwtBearerEvents() // C?u hình s? ki?n xác th?c
+     {
+         OnMessageReceived = context =>
+         {            
+             var accessToken = context.Request.Cookies["AccessToken"];
+             context.Token = accessToken;
+             return Task.CompletedTask;
+         }
+     };
+ });
 
 //Thêm d?ch v? Identity vào d?ch v?.
 builder.Services.AddDefaultIdentity<IdentityUser>(options => 
@@ -56,36 +91,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 var jwtSettings = builder.Configuration.GetSection("Jwt"); 
 
 // ??ng ký d?ch v? xác th?c
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; // Xác th?c m?c ??nh 
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; // Thách th?c m?c ??nh
-})
- .AddJwtBearer(options => // Thêm xác th?c JWT
- {
-      options.TokenValidationParameters = new TokenValidationParameters() // C?u hình các tham s? ki?m tra token
-      {
-           ValidateActor = true,
-           ValidateIssuer = true,
-           ValidateAudience = true,
-           RequireExpirationTime = true,
-           ValidateLifetime = true,
-           ValidateIssuerSigningKey = true,
-           ValidIssuer = jwtSettings["Issuer"],
-           ValidAudience = jwtSettings["Audience"],
-           ClockSkew = TimeSpan.Zero,
-           IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"])),
-      };
 
-       options.Events = new JwtBearerEvents() // C?u hình s? ki?n xác th?c
-       {
-            OnMessageReceived = context =>
-            {
-                 context.Token = context.Request.Cookies["AccessToken"];
-                 return Task.CompletedTask;
-            }
-       };
- });
+builder.Services.AddSingleton<IAuthorizationHandler, AdminRequirementHandler>();
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Admin", policy => policy.Requirements.Add(new AdminRequirement()));
+});
 
 var app = builder.Build();
 
@@ -99,17 +110,16 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
 
-app.UseAuthentication(); // S? d?ng xác th?c 
-
+app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-await app.SeedDataAsync(); // Thêm d? li?u vào c? s? d? li?u
+await app.SeedDataAsync(); // Seed d? li?u
 
 app.Run();

@@ -22,13 +22,13 @@ namespace CK_CSharp.Controllers
             _signInManager = signInManager;
         }
 
-        [Route("login-view")] 
+        [Route("LoginView")] 
         public IActionResult LoginView()
         {
             return View();
         }
 
-        [Route("register-view")]
+        [Route("RegisterView")]
         public IActionResult RegisterView()
         {
             return View();
