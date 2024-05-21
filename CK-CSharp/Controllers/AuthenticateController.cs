@@ -77,11 +77,11 @@ namespace CK_CSharp.Controllers
         }
 
         [HttpPost]
-        [Route("logout")]
+        [Route("Logout")]
         public async Task<IActionResult> Logout()
         {
             await _authenticationService.Logout();
-            return RedirectToAction("LoginView");
+            return RedirectToAction("Index", "Home");
         }
 
         private async Task GenerateAndWriteToken(IdentityUser user)

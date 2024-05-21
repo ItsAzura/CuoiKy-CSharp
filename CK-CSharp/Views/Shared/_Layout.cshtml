@@ -25,9 +25,19 @@
                <a asp-controller="Company" asp-action="List" class="NavItem">Company</a>
             </div>
             <div class="profile">
-                
-                <a href="#">Profile</a>
-                <img src="~/image/animepic2.jpg" alt="profile" />
+                @* Kiểm tra xem đã đăng nhập chưa *@
+                @if (User.Identity.IsAuthenticated) 
+                {
+                    <p class="Nav_UserName">@User.Identity.Name</p>
+                    <form asp-controller="Authenticate" asp-action="Logout" method="post">
+                        <button type="submit" class="Logout_btn">Logout</button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-controller="Authenticate" asp-action="LoginView" class="NavItem">Đăng Nhập</a>
+                    <a asp-controller="Authenticate" asp-action="RegisterView" class="NavItem">Đăng Ký</a>
+                }
             </div>
         </div>
     </header>

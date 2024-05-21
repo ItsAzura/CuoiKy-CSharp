@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 namespace CK_CSharp.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
