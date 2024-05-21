@@ -37,6 +37,10 @@
       "PackagePath": "staticwebassets\\css\\Employee - List.css"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Login.css",
+      "PackagePath": "staticwebassets\\css\\Login.css"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\css\\Schedule - List.css",
       "PackagePath": "staticwebassets\\css\\Schedule - List.css"
     },
@@ -81,8 +85,16 @@
       "PackagePath": "staticwebassets\\image\\Company-amico-removebg-preview.png"
     },
     {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Login.png",
+      "PackagePath": "staticwebassets\\image\\Login.png"
+    },
+    {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Logo2.png",
       "PackagePath": "staticwebassets\\image\\Logo2.png"
+    },
+    {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Register.png",
+      "PackagePath": "staticwebassets\\image\\Register.png"
     },
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Screenshot 2023-09-17 141103.png",
@@ -119,6 +131,10 @@
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\me.jpg",
       "PackagePath": "staticwebassets\\image\\me.jpg"
+    },
+    {
+      "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\register.png.jpg",
+      "PackagePath": "staticwebassets\\image\\register.png.jpg"
     },
     {
       "Id": "D:\\Learn C#\\CK-CSharp\\CK-CSharp\\wwwroot\\image\\Đăng ký.png",

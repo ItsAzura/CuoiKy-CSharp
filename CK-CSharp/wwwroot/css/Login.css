@@ -1,0 +1,94 @@
+﻿div.Login_container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.Login_container_left {
+    flex:1;
+    height: 100%;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+}
+
+h1.Login_title {
+    font-size: 48px;
+    margin-top: 12px;
+    color: #fff;
+    margin-bottom: 24px;
+    text-shadow: 2px 2px 4px #000000;
+    text-shadow: #ffffff 1px 0 8px;
+}
+
+form.Login_form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+div.Login_GroupInput {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 12px;
+    margin-top: 12px;
+}
+
+div.Login_GroupInput label {
+    color: #fff;
+    font-size: 1.2em;
+}
+
+div.Login_GroupInput input {
+    width: 80%;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 6px;
+}
+
+button.Login_btn {
+    width: 30%;
+    height: 40px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+button.Login_btn:hover {
+    background-color: #45a049;
+}
+
+.Login_container_right {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img.Login_img {
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+}
+
+a.Login_RegisterBtn {
+    color: #fff;
+    font-size: 1.2em;
+    text-decoration: none;
+    margin-top: 12px;
+}
+

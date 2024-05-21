@@ -34,6 +34,35 @@ body {
     text-align: center;
 }
 
+p.Nav_UserName {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 24px;
+    margin:0;
+}
+
+button.Logout_btn {
+background-color: #258cfb;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button.Logout_btn:hover {
+    background-color: #0d6efd;
+    transform: scale(1.05);
+    box-shadow: 
+    -webkit-box-shadow:0px 0px 10px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
+}
+
 .Logo {
     display: flex;
     flex-direction: row;
