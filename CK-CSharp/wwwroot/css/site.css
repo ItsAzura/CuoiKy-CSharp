@@ -1,0 +1,155 @@
+* {
+    
+}
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #1e252e;
+}
+
+.nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+
+p.Nav_UserName {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 24px;
+    margin:0;
+}
+
+button.Logout_btn {
+background-color: #258cfb;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button.Logout_btn:hover {
+    background-color: #0d6efd;
+    transform: scale(1.05);
+    box-shadow: 
+    -webkit-box-shadow:0px 0px 10px 0px rgba(255,255,255,0.41);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
+    box-shadow: 0px 0px 10px 0px rgba(255,255,255,0.41);
+}
+
+.Logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.Logo img {
+    width: 70px;
+    height: 70px;
+}
+
+.Logo a {
+    text-decoration: none;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+    .Logo a:hover {
+        scale: 1.1;
+        text-shadow: #ffffff 1px 0 8px;
+    }
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-right: 24px;
+}
+
+.profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 600
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out
+}
+
+.menu a:hover {
+     scale: 1.1;
+     text-shadow: #ffffff 1px 0 8px;
+}
+
+.footer {
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 24px;
+}
+
+.footer a {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.footer a:hover {
+    scale: 1.1;
+    text-shadow: #ffffff 1px 0 3px;
+}

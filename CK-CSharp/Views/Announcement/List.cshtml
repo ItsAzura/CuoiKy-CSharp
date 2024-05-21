@@ -1,0 +1,90 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<CK_CSharp.Models.Announcement>
+
+@{
+    ViewData["Title"] = "List Announcement";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Announcement - List.css" />
+}
+
+<h1 class="Announcement_list_title">Announcement List</h1>
+
+<div class="Announcement_list_feature">
+    <div class="Announcement_list_searchfilter">
+        <form method="get" asp-controller="Announcement" asp-action="List" class="Announcement_list_search">
+            <input type="text" name="searchString" value="@ViewData["AnnouncementCurrentFilter"]" placeholder="Search by name..." class="Announcement_list_searchbar" />
+            <button type="submit" class="Announcement_list_searchbarBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m21 21l-4.343-4.343m0 0A8 8 0 1 0 5.343 5.343a8 8 0 0 0 11.314 11.314" /></svg>
+            </button>
+        </form>
+        <form method="get" asp-controller="Announcement" asp-action="List" class="Announcement_list_filter">
+            <p class="Announcement_list_filterLaber" for="minSalary">Start Day:</p>
+            <input class="Announcement_list_filterInput" type="text" name="startDate" value="@ViewData["StartDate"]" placeholder="dd/MM/yyyy" />
+            <p class="Announcement_list_filterLaber" for="maxSalary">End Day:</p>
+            <input class="Announcement_list_filterInput" type="text" name="endDate" value="@ViewData["EndDate"]" placeholder="dd/MM/yyyy" />
+            <button type="submit" class="Announcement_list_searchbarBtn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 512 512"><path fill="currentColor" d="M472 168H40a24 24 0 0 1 0-48h432a24 24 0 0 1 0 48m-80 112H120a24 24 0 0 1 0-48h272a24 24 0 0 1 0 48m-96 112h-80a24 24 0 0 1 0-48h80a24 24 0 0 1 0 48" /></svg>
+            </button>
+        </form>
+    </div>
+
+    <div class="Announcement_list_feature_right">
+        <a asp-action="Add" asp-controller="Announcement" class="Announcement_list_btnCreate">Thêm mới</a>
+
+        <div class="Announcement_list_sort">
+            <a href="@Url.Action("List", new { sortOrder = "name_asc", searchString = ViewData["AnnouncementCurrentFilter"], startDate = ViewData["StartDate"], endDate = ViewData["EndDate"] })">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 14h4.421c.93 0 1.395 0 1.52.28c.123.28-.193.616-.826 1.288l-3.638 3.864c-.633.672-.95 1.008-.826 1.288s.59.28 1.52.28H10M4 9l2.106-4.695C6.496 3.435 6.69 3 7 3s.504.435.894 1.305L10 9m7.5 11V4m0 16c-.7 0-2.008-1.994-2.5-2.5m2.5 2.5c.7 0 2.009-1.994 2.5-2.5" color="currentColor" /></svg>
+            </a>
+            <a href="@Url.Action("List", new { sortOrder = "name_desc", searchString = ViewData["AnnouncementCurrentFilter"], startDate = ViewData["StartDate"], endDate = ViewData["EndDate"] })">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 3h4.421c.93 0 1.395 0 1.52.28c.123.28-.193.616-.826 1.288L5.477 8.432c-.633.672-.95 1.008-.826 1.288s.59.28 1.52.28H10M4 21l2.106-4.695C6.496 15.435 6.69 15 7 15s.504.435.894 1.305L10 21m7.5-1V4m0 16c-.7 0-2.008-1.994-2.5-2.5m2.5 2.5c.7 0 2.009-1.994 2.5-2.5" color="currentColor" /></svg>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="Announcement_list_container">\
+    @foreach (var item in Model)
+    {
+        <div class="Announcement_list_item">
+            <img src="@item.ImagePath" class="Announcement_list_img" />
+            <div class="Announcement_list_itemDetail">
+                <h3>@item.Title</h3>
+                <p>@item.DatePosted</p>
+                <p class="Announcement_list_itemDetail_Descrip">@item.EmployeeName</p>
+                <div class="Announcement_list_groupBtn">
+                    <a class="Announcement_list_btnDetail" asp-action="Detail" asp-controller="Announcement" asp-route-id="@item.AnnouncementId">Chi Tiết</a>
+                    <button class="delete-button Announcement_list_btnDelete" data-id="@item.AnnouncementId">Xoá</button>
+                </div>
+            </div>
+        </div>
+    }
+
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                $('.delete-button').click(function () {
+                    var id = $(this).data('id');
+                    $.ajax({
+                        url: "/Announcement/Delete/" + id,
+                        type: 'POST',
+                        success: function (result) {
+                            location.reload();
+                        },
+                        error: function () {
+                            alert('Đã xảy ra lỗi khi xóa mục.');
+                        }
+                    });
+                });
+            });
+        </script>
+    }
+</div>

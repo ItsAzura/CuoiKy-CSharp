@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CK_CSharp.Models.Announcement
+
+@{
+    ViewData["Title"] = "Add Announcement";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Add.css" />
+}
+
+<h1 class="Add_title">ADD ANNOUNCEMENT</h1>
+
+<form asp-action="Add" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <p asp-for="Name" class="Add_lable">Tên Thông Báo</p>
+        <input asp-for="Title" class="form-control" required />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="Content" class="Add_lable">Nội Dung</p>
+        <input asp-for="Content" class="form-control" required />
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="DatePosted" class="Add_lable">Ngày Đăng</p>
+        <input asp-for="DatePosted" class="form-control" required />
+        <span asp-validation-for="DatePosted" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="CategoryId" class="Add_lable">ID Thể Loại</p>
+        <input asp-for="CategoryId" class="form-control" required />
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="EmployeeId" class="Add_lable">ID Nhân Viên</p>
+        <input asp-for="EmployeeId" class="form-control" required />
+        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="Image" class="Add_lable">Ảnh Thông Báo</p>
+        <input asp-for="Image" class="form-control" required type="file" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm</button>
+    <a class="btn btn-danger" asp-action="List" asp-controller="Announcement">Huỷ</a>
+</form>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })

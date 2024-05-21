@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CK_CSharp.Models.Company
+
+@{
+    ViewData["Title"] = "Add Company";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Add.css" />
+}
+
+<h1 class="Add_title">ADD COMPANY</h1>
+
+<form asp-action="Add" method="post">
+    <div class="form-group">
+        <p asp-for="Name" class="Add_lable">Tên Công Ty</p>
+        <input asp-for="Name" class="form-control" required title="Vui lòng nhập tên Công Ty" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="Address" class="Add_lable">Địa Chỉ Công Ty</p>
+        <input asp-for="Address" class="form-control" required title="Vui lòng nhập địa chỉ Công Ty" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="PhoneNumber" class="Add_lable">Số Điện Thoại Công Ty</p>
+        <input asp-for="PhoneNumber" class="form-control" required title="Vui lòng nhập số điện thoại Công Ty" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="Email" class="Add_lable">Email Công Ty</p>
+        <input asp-for="Email" class="form-control" required title="Vui lòng nhập Email Công Ty" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Thêm</button>
+    <a class="btn btn-danger" asp-action="List" asp-controller="Company">Huỷ</a>
+</form>
+
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })

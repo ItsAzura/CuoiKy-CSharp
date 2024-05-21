@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CK_CSharp.Models.UserRegister
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Login.css" />
+}
+<div class="Login_container">
+    <div class="Login_container_left">
+        <h1 class="Login_title">Đăng Ký</h1>
+
+        <form asp-controller="Authenticate" asp-action="RegisterUser" method="post" class="Login_form">
+            <div class="Login_GroupInput">
+                <label asp-for="UserEmail">Tên Email</label>
+                <input asp-for="UserEmail" />
+            </div>
+            <div class="Login_GroupInput">
+                <label asp-for="UserName">Tên đăng nhập</label>
+                <input asp-for="UserName" />
+            </div>
+            <div class="Login_GroupInput">
+                <label asp-for="Password">Mật Khẩu</label>
+                <input asp-for="Password" />
+            </div>
+
+            <div class="Login_GroupInput">
+                <label asp-for="ConfirmPassword">Xác Thực Mật Khẩu</label>
+                <input asp-for="ConfirmPassword" />
+            </div>
+
+            <button type="submit" class="Login_btn">Đăng Ký</button>
+            <div>
+                <a asp-controller="Authenticate" asp-action="LoginView" class="Login_RegisterBtn">Đăng Nhập</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="Login_container_right">
+        <img src="~/image/Register.png" alt="Login" class="Login_img" />
+    </div>
+</div>

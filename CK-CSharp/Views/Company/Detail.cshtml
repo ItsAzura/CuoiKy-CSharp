@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CK_CSharp.Models.Company
+
+@{
+    ViewData["Title"] = "Detail Company";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Detail.css" />
+}
+
+<h1 class="Detail_title">Detail Company: @Html.DisplayFor(model => model.Name)</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.Name):</p>
+        </dt>
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.Name)</p>
+        </dd>
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.Address):</p>
+        </dt>
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.Address)</p>
+        </dd>
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.PhoneNumber):</p>
+        </dt>
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.PhoneNumber)</p>
+        </dd>
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.Email):</p>  
+        </dt>
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.Email)</p>
+        </dd>
+    </dl>
+</div>
+    <div>
+        <a class="btn btn-primary" asp-action="Edit" asp-controller="Company" asp-route-id="@Model.CompanyId">Sửa</a> |
+        <a class="btn btn-danger" asp-action="List" asp-controller="Company">Quay Lại</a>
+    </div>
+

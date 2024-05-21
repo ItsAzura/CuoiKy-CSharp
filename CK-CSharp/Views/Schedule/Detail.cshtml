@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CK_CSharp.Models.Schedule
+
+@{
+    ViewData["Title"] = "Detail Schedule";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Detail.css" />
+}
+
+<h1 class="Detail_title">Detail Schdule: @Html.DisplayFor(model => model.Name)</h1>
+
+<div>
+    <h4>Schedule</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            
+         </dt>
+        <dd class="col-sm-8">
+            <img src="@Model.ImagePath" alt="image" class="Detail_img" />
+        </dd>
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.Name):</p>
+        </dt>
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.Name)</p>
+        </dd>
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.Description):</p>
+        </dt>
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.Description)</p>
+        </dd>
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.StartDate):</p>
+        </dt>
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.StartDate)</p>
+        </dd>
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.EndDate):</p>
+        </dt>
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.EndDate)</p>
+        </dd>
+        <dt class = "col-sm-3">
+            <p class="Detail_Name">@Html.DisplayNameFor(model => model.EmployeeName):</p>
+        </dt>
+        <dd class = "col-sm-8">
+            <p class="Detail_value">@Html.DisplayFor(model => model.EmployeeName)</p>
+        </dd>
+    </dl>
+</div>
+<div>
+     <a class="btn btn-primary" asp-action="Edit" asp-controller="Schedule" asp-route-id="@Model.ScheduleId">Sửa</a> |
+     <a class="btn btn-danger" asp-action="List" asp-controller="Schedule">Quay Lại</a>
+</div>

@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" />
+}
+
+<div class="home-container">
+    <div class="container-left">
+        <h1>Welcome to Azura</h1>
+        <p>Where you can manage your company's schedule and announcement</p>
+        <div class="Group-btn">
+            <a asp-controller="Announcement" asp-action="List" class="NavItem">Announcement</a>
+            <a asp-controller="Schedule" asp-action="List" class="NavItem">Schedule</a>
+        </div>
+    </div>
+    <div class="container-right">
+        <img src="/image/Company-amico-removebg-preview.png" alt="Alternate Text" />
+    </div>
+</div>

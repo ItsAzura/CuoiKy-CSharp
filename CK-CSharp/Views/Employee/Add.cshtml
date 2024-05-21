@@ -1,0 +1,72 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CK_CSharp.Models.Employee
+
+@{
+    ViewData["Title"] = "Add Employee";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Add.css" />
+}
+
+<h1 class="Add_title">ADD EMPLOYEE</h1>
+
+
+<form asp-action="Add" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <p asp-for="Name" class="Add_lable">Tên Nhân Viên</p>
+        <input asp-for="Name" class="form-control" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="Dob" class="Add_lable">Ngày Sinh</p>
+        <input asp-for="Dob" class="form-control" required />
+        <span asp-validation-for="Dob" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="Address" class="Add_lable">Địa Chỉ</p>
+        <input asp-for="Address" class="form-control" required  />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="PhoneNumber" class="Add_lable">Số Điện Thoại</p>
+        <input asp-for="PhoneNumber" class="form-control" required />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="Email" class="Add_lable">Email</p>
+        <input asp-for="Email" class="form-control" required  />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="Salary" class="Add_lable">Lương</p>
+        <input asp-for="Salary" class="form-control" required />
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="StartTime" class="Add_lable">Ngày Bắt Đầu</p>
+        <input asp-for="StartTime" class="form-control" required />
+        <span asp-validation-for="StartTime" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="DepartmentId" class="Add_lable">Mã Phòng Ban</p>
+        <input asp-for="DepartmentId" class="form-control" required  />
+        <span asp-validation-for="DepartmentId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="Image" class="Add_lable">Ảnh Đại Diện</p>
+        <input asp-for="Image" class="form-control" required type="file" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm</button>
+    <a class="btn btn-danger" asp-action="List" asp-controller="Employee">Huỷ</a>
+</form>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+

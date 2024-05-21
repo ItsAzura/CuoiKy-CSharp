@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CK_CSharp.Models.Schedule
+
+@{
+    ViewData["Title"] = "Add Schedule";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Add.css" />
+}
+
+<h1 class="Add_title">ADD SCHEDULE</h1>
+
+<form asp-action="Add" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <p asp-for="Name" class="Add_lable">Tên Lịch Trình</p>
+        <input asp-for="Name" class="form-control" required />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="Description" class="Add_lable">Mô Tả</p>
+        <input asp-for="Description" class="form-control" required  />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="StartDate" class="Add_lable">Thời Gian Bắt Đầu</p>
+        <input asp-for="StartDate" class="form-control" required />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="EndDate" class="Add_lable">Thời Gian Kết Thúc</p>
+        <input asp-for="EndDate" class="form-control" required  />
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="EmployeeId" class="Add_lable">ID Nhân Viên</p>
+        <input asp-for="EmployeeId" class="form-control" required  />
+        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <p asp-for="Image" class="Add_lable">Ảnh Lịch Trình</p>
+        <input asp-for="Image" class="form-control" required type="file" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Thêm</button>
+    <a class="btn btn-danger" asp-action="List" asp-controller="Schedule">Huỷ</a>
+
+</form>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
